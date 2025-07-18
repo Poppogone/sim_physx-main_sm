@@ -189,7 +189,7 @@ public class Question_and_Record : MonoBehaviour
         }
         else if (area_now == 2)  // 掘削2
         {
-            ope_state = 2;
+            ope_state = 1;
         }
 
 

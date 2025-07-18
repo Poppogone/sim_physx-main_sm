@@ -22,7 +22,7 @@ public class foot_sw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.KeypadMinus))
+        if(Input.GetKey(KeyCode.LeftArrow))   //KeyCode.KeypadMinus
         {
             if(left_sw)
             {
@@ -37,7 +37,7 @@ public class foot_sw : MonoBehaviour
             left_sw = true;
         }
 
-        if(Input.GetKey(KeyCode.KeypadPlus))
+        if(Input.GetKey(KeyCode.RightArrow))   //KeyCode.KeypadPlus
         {
             if(right_sw)
             {

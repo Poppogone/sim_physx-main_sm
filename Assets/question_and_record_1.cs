@@ -157,6 +157,9 @@ public class question_and_record_1 : MonoBehaviour
                                               new Vector2 (652.8f, 270.0f), new Vector2 (960.0f, 270.0f), new Vector2 (1267.2f, 270.0f),
                                               new Vector2 (652.8f, 97.2f), new Vector2 (960.0f, 97.2f), new Vector2 (1267.2f, 97.2f)});
         // charactrer_list.AddRange(new List<string>[] {new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>()});
+    
+    StartCheck(); // 出題開始のフラグをオンにする
+
     }
 
     // Update is called once per frame

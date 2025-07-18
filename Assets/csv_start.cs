@@ -26,7 +26,7 @@ public class csv_start : MonoBehaviour
         operation_state_check script;
         script = op_state.GetComponent<operation_state_check>();
         area_pre = script.area_now;
-        Debug.Log(area_pre+"aaaa");
+        //Debug.Log(area_pre+"aaaa");
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class csv_start : MonoBehaviour
             operation_state_check script;
             script = op_state.GetComponent<operation_state_check>();
             area_now = script.area_now;
-            Debug.Log(area_now+"bbbb");
+            //Debug.Log(area_now+"bbbb");
             if(area_now != area_pre)
             {
                 string[] s1_op = {timeNow.ToString(), area_now.ToString()};
