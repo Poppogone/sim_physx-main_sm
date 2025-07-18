@@ -70,8 +70,8 @@ public class zx120Controller : MonoBehaviour
         ros.Publish(swingTopic, swingMsg);
         ros.Publish(armTopic, armMsg);
 
-        GameObject box = GameObject.Find("zx120/base_link/Collisions/unnamed/Box");
-        box.SetActive(true);
+        //GameObject box = GameObject.Find("zx120/base_link/Collisions/unnamed/Box");
+        //box.SetActive(true);
     }
 
     void Update()

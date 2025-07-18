@@ -32,7 +32,7 @@ public class csv_camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsCheck)
+        if (IsCheck && drone != null)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
 
