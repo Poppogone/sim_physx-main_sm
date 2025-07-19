@@ -45,13 +45,13 @@ public class Test_QandR_num3 : MonoBehaviour
 
     int ope_state;
 
-    float[,] all_ans_time = new float[3, 4];  // 回答時間を各エリア，各回答数毎に記録（エリア０の１回目，２回目，エリア１の１回目，２回目，… の順）
-    public float[,] AnsTime = new float[3, 2];  // エリアごとの回答時間の平均（to_heatmap.cs へ）
+    float[,] all_ans_time = new float[27, 4];  // 回答時間を各エリア，各回答数毎に記録（エリア０の１回目，２回目，エリア１の１回目，２回目，… の順）
+    public float[,] AnsTime = new float[27, 2];  // エリアごとの回答時間の平均（to_heatmap.cs へ）
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 27; i++)
         {
             for(int j = 0; j < 4; j++)
             {
@@ -67,7 +67,7 @@ public class Test_QandR_num3 : MonoBehaviour
             question_0_list_1 = new List<int>();
             question_0_list_2 = new List<int>();
             charactrer_0_list = new List<string>();
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 27; i++)
             {
                 question_0_list_1.Add(i+1);
                 question_0_list_2.Add(i+1);
@@ -81,7 +81,7 @@ public class Test_QandR_num3 : MonoBehaviour
             question_1_list_1 = new List<int>();
             question_1_list_2 = new List<int>();
             charactrer_1_list = new List<string>();
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 27; i++)
             {
                 question_1_list_1.Add(i+1);
                 question_1_list_2.Add(i+1);
@@ -92,15 +92,15 @@ public class Test_QandR_num3 : MonoBehaviour
 
 
         // 出題位置設定
-        text_pos_list.AddRange(new Vector2[] {new Vector2 (172.8f, 982.8f), new Vector2 (480.0f, 982.8f), new Vector2 (787.2f, 982.8f),
-                                              /*new Vector2 (172.8f, 810.0f), new Vector2 (480.0f, 810.0f), new Vector2 (787.2f, 810.0f),
-                                              new Vector2 (172.8f, 637.2f), new Vector2 (480.0f, 637.2f), new Vector2 (787.2f, 637.2f),
-                                              new Vector2 (1132.8f, 982.8f), new Vector2 (1440.0f, 982.8f), new Vector2 (1747.2f, 982.8f),
-                                              new Vector2 (1132.8f, 810.0f), new Vector2 (1440.0f, 810.0f), new Vector2 (1747.2f, 810.0f),
-                                              new Vector2 (1132.8f, 637.2f), new Vector2 (1440.0f, 637.2f), new Vector2 (1747.2f, 637.2f),
-                                              new Vector2 (652.8f, 442.8f), new Vector2 (960.0f, 442.8f), new Vector2 (1267.2f, 442.8f),
-                                              new Vector2 (652.8f, 270.0f), new Vector2 (960.0f, 270.0f), new Vector2 (1267.2f, 270.0f),
-                                              new Vector2 (652.8f, 97.2f), new Vector2 (960.0f, 97.2f), new Vector2 (1267.2f, 97.2f)*/
+        text_pos_list.AddRange(new Vector2[] {new Vector2 (350.0f, 960.0f), new Vector2 (520.0f, 960.0f), new Vector2 (690.0f, 960.0f),
+                                              new Vector2 (350.0f, 830.0f), new Vector2 (520.0f, 830.0f), new Vector2 (690.0f, 830.0f),
+                                              new Vector2 (350.0f, 700.0f), new Vector2 (520.0f, 700.0f), new Vector2 (690.0f, 700.0f),
+                                              new Vector2 (1190.0f, 960.0f), new Vector2 (1360.0f, 960.0f), new Vector2 (1530.0f, 960.0f),
+                                              new Vector2 (1190.0f, 830.0f), new Vector2 (1360.0f, 830.0f), new Vector2 (1530.0f, 830.0f),
+                                              new Vector2 (1190.0f, 700.0f), new Vector2 (1360.0f, 700.0f), new Vector2 (1530.0f, 700.0f),
+                                              new Vector2 (770.0f, 420.0f), new Vector2 (940.0f, 420.0f), new Vector2 (1110.0f, 420.0f),
+                                              new Vector2 (770.0f, 290.0f), new Vector2 (940.0f, 290.0f), new Vector2 (1110.0f, 290.0f),
+                                              new Vector2 (770.0f, 160.0f), new Vector2 (940.0f, 160.0f), new Vector2 (1110.0f, 160.0f)
                                               });
         // charactrer_list.AddRange(new List<string>[] {new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>(), new List<string>()});
     
@@ -116,7 +116,7 @@ public class Test_QandR_num3 : MonoBehaviour
             question_0_list_1 = new List<int>();
             question_0_list_2 = new List<int>();
             charactrer_0_list = new List<string>();
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 27; i++)
             {
                 question_0_list_1.Add(i+1);
                 question_0_list_2.Add(i+1);
@@ -129,7 +129,7 @@ public class Test_QandR_num3 : MonoBehaviour
             question_1_list_1 = new List<int>();
             question_1_list_2 = new List<int>();
             charactrer_1_list = new List<string>();
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 27; i++)
             {
                 question_1_list_1.Add(i+1);
                 question_1_list_2.Add(i+1);
@@ -143,7 +143,7 @@ public class Test_QandR_num3 : MonoBehaviour
             if(question_sw && !in_question) // "出題可能" かつ "出題中ではない"
             {
                 question_sw = false;
-                Invoke("Question", UnityEngine.Random.Range(1.0f, 1.5f)); // 出題間隔設定(2, 5)
+                Invoke("Question", UnityEngine.Random.Range(1.0f, 2.0f)); // 出題間隔設定(2, 5)
             }
         }
 
@@ -252,7 +252,7 @@ public class Test_QandR_num3 : MonoBehaviour
     void Disappearance()
     {
         timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-        csv_writer.GetComponent<csv_character_pop>().RightAnswerRecord(ope_state.ToString(), selected_question.ToString(), c_now, "ignored", timeAnswer.ToString());
+        csv_writer.GetComponent<csv_RingQuestion>().RightAnswerRecord(ope_state.ToString(), selected_question.ToString(), c_now, "ignored", timeAnswer.ToString());
         if(all_ans_time[selected_question - 1, ope_state*2] == 5.0f)
         {
             all_ans_time[selected_question - 1, ope_state*2] = 4.0f;
@@ -274,7 +274,7 @@ public class Test_QandR_num3 : MonoBehaviour
         if(!in_question)
         {
             // 勝手に押した
-            csv_writer.GetComponent<csv_character_pop>().LeftAnswerRecord("9999","9999","xx", "irrelevant_answer", "9999");
+            csv_writer.GetComponent<csv_RingQuestion>().LeftAnswerRecord("9999","9999","xx", "irrelevant_answer", "9999");
         }
         else
         {
@@ -282,7 +282,7 @@ public class Test_QandR_num3 : MonoBehaviour
             {
                 // 正答
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                csv_writer.GetComponent<csv_character_pop>().LeftAnswerRecord(ope_state.ToString(), selected_question.ToString(), "H", "correct", timeAnswer.ToString());
+                csv_writer.GetComponent<csv_RingQuestion>().LeftAnswerRecord(ope_state.ToString(), selected_question.ToString(), "H", "correct", timeAnswer.ToString());
                 if(all_ans_time[selected_question - 1, ope_state*2] == 5.0f)
                 {
                     all_ans_time[selected_question - 1, ope_state*2] = timeAnswer;
@@ -304,7 +304,7 @@ public class Test_QandR_num3 : MonoBehaviour
             {
                 // 文字の見間違え
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                csv_writer.GetComponent<csv_character_pop>().LeftAnswerRecord(ope_state.ToString(), selected_question.ToString(), "N","character_mistake", timeAnswer.ToString());
+                csv_writer.GetComponent<csv_RingQuestion>().LeftAnswerRecord(ope_state.ToString(), selected_question.ToString(), "N","mistake", timeAnswer.ToString());
                 if(all_ans_time[selected_question - 1, ope_state*2] == 5.0f)
                 {
                     all_ans_time[selected_question - 1, ope_state*2] = 4.0f;
@@ -330,7 +330,7 @@ public class Test_QandR_num3 : MonoBehaviour
         if(!in_question)
         {
             // 勝手に押した
-            csv_writer.GetComponent<csv_character_pop>().RightAnswerRecord("9999", "9999", "xxx", "irrelevant_answer", "9999");
+            csv_writer.GetComponent<csv_RingQuestion>().RightAnswerRecord("9999", "9999", "xxx", "irrelevant_answer", "9999");
         }
         else
         {
@@ -338,7 +338,7 @@ public class Test_QandR_num3 : MonoBehaviour
             {
                 // 正答
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                csv_writer.GetComponent<csv_character_pop>().RightAnswerRecord(ope_state.ToString(), selected_question.ToString(), "N", "correct", timeAnswer.ToString());
+                csv_writer.GetComponent<csv_RingQuestion>().RightAnswerRecord(ope_state.ToString(), selected_question.ToString(), "N", "correct", timeAnswer.ToString());
                 if(all_ans_time[selected_question - 1, ope_state*2] == 5.0f)
                 {
                     all_ans_time[selected_question - 1, ope_state*2] = timeAnswer;
@@ -360,7 +360,7 @@ public class Test_QandR_num3 : MonoBehaviour
             {
                 // 文字の見間違え
                 timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-                csv_writer.GetComponent<csv_character_pop>().RightAnswerRecord(ope_state.ToString(), selected_question.ToString(), "H", "character_mistake", timeAnswer.ToString());
+                csv_writer.GetComponent<csv_RingQuestion>().RightAnswerRecord(ope_state.ToString(), selected_question.ToString(), "H", "mistake", timeAnswer.ToString());
                 if(all_ans_time[selected_question - 1, ope_state*2] == 5.0f)
                 {
                     all_ans_time[selected_question - 1, ope_state*2] = 4.0f;

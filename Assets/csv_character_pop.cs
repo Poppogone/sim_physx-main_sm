@@ -64,7 +64,7 @@ public class csv_character_pop : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_character_pop.csv", false, Encoding.UTF8);
+        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_character_pop.csv", false, Encoding.UTF8);
         string[] s1 = { "Time", "Area", "LorR", "Question", "Character", "State", "Answer_Time"};
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);

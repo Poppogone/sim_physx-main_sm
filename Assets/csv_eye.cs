@@ -56,7 +56,7 @@ public class csv_eye : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_eye.csv", false, Encoding.UTF8);
+        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_eye.csv", false, Encoding.UTF8);
         string[] s1 = { "time", "is_recent","pos_x", "pos_y" };
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);

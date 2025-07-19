@@ -28,6 +28,7 @@ public class operation_state_check : MonoBehaviour
     private float[] area3_x = new float[] { 15.5f, 20.5f };
     private float[] area3_z = new float[] { 6.0f, 11.5f };
 
+
     private bool area_0_check = true;
 
     void Start()

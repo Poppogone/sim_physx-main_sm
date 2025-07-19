@@ -100,25 +100,25 @@ public class csv_target_pos_1 : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw1 = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_target_pos_1.csv", false, Encoding.UTF8);
+        sw1 = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_target_pos_1.csv", false, Encoding.UTF8);
         string[] s1_1 = { "time", "pos_x", "pos_y", "pos_z"};
         string s2_1 = string.Join(",", s1_1);
         sw1.WriteLine(s2_1);
         Debug.Log("csv_target_pos_1");
 
-        sw3 = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_target_pos_3.csv", false, Encoding.UTF8);
+        sw3 = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_target_pos_3.csv", false, Encoding.UTF8);
         string[] s1_3 = { "time", "pos_x", "pos_y", "pos_z"};
         string s2_3 = string.Join(",", s1_3);
         sw3.WriteLine(s2_3);
         Debug.Log("csv_target_pos_3");
 
-        sw5 = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_target_pos_5.csv", false, Encoding.UTF8);
+        sw5 = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_target_pos_5.csv", false, Encoding.UTF8);
         string[] s1_5 = { "time", "pos_x", "pos_y", "pos_z"};
         string s2_5 = string.Join(",", s1_5);
         sw5.WriteLine(s2_5);
         Debug.Log("csv_target_pos_5");
 
-        sw7 = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_target_pos_7.csv", false, Encoding.UTF8);
+        sw7 = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_target_pos_7.csv", false, Encoding.UTF8);
         string[] s1_7 = { "time", "pos_x", "pos_y", "pos_z"};
         string s2_7 = string.Join(",", s1_7);
         sw7.WriteLine(s2_7);

@@ -105,7 +105,7 @@ public class csv_camera : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_camera.csv", false, Encoding.UTF8);
+        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_camera.csv", false, Encoding.UTF8);
         string[] s1 = { "time","is_free", "r","phi", "theta" };
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);

@@ -38,7 +38,7 @@ public class BallController : MonoBehaviour
             csv_writer.GetComponent<csv_ball>().CountPickBall();
         }
 
-        if (2.75f<posX && posX<6.25f && 1.4f<posY && posY<2.0f && -5.5f<posZ && posZ<-3.5f)  // 積込場１に入ったら
+        if (29.0f<posX && posX<35.0f && 0.4f<posY && posY<2.0f && 1.4f<posZ && posZ<3.6f)  // 積込場１に入ったら
         {
             if (m == 0)
             {
@@ -51,7 +51,7 @@ public class BallController : MonoBehaviour
             }
         }
 
-        if (-51.0f<posX && posX<-49.0f && 1.4f<posY && posY<2.0f && 39.0f<posZ && posZ<42.5f)  // 積込場２に入ったら
+        if (1.0f<posX && posX<7.0f && 0.4f<posY && posY<2.0f && 1.4f<posZ && posZ<3.6f)  // 積込場２に入ったら
         {
             if (l == 0)
             {

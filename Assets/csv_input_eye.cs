@@ -123,7 +123,7 @@ public class csv_input_eye : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_inputeye.csv", false, Encoding.UTF8);
+        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_inputeye.csv", false, Encoding.UTF8);
         string[] s1 = { "time","kenki_pos_x","kenki_pos_y","kenki_pos_z","kenki_ori_y","swing","boom","arm","bucket","h_pos_x","h_pos_y","h_pos_z","h_ang_x","h_ang_y","h_ang_z","is_free", "is_recent","pos_x", "pos_y","filtered_pos_x", "filtered_pos_y" };
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);

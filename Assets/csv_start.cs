@@ -86,13 +86,13 @@ public class csv_start : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_start.csv", false, Encoding.UTF8);
+        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_start.csv", false, Encoding.UTF8);
         string[] s1 = {"time"};
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);
         IsCheck = true;
 
-        sw_op = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_operation_state.csv", false, Encoding.UTF8);
+        sw_op = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_operation_state.csv", false, Encoding.UTF8);
         string[] s1_op = {"time", "area"};
         string s2_op = string.Join(",", s1_op);
         sw_op.WriteLine(s2_op);

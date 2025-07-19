@@ -78,7 +78,7 @@ public class csv_ball : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_ball_count.csv", false, Encoding.UTF8);
+        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_ball_count.csv", false, Encoding.UTF8);
         string[] s1 = { "time", "pick", "get1", "get2"};
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);

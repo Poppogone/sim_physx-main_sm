@@ -74,7 +74,7 @@ public class csv_collision : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_collision.csv", false, Encoding.UTF8);
+        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_collision.csv", false, Encoding.UTF8);
         string[] s1 = { "time", "object", "is_target"};
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);

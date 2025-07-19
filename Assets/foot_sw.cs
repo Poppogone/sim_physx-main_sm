@@ -27,7 +27,7 @@ public class foot_sw : MonoBehaviour
             if(left_sw)
             {
                 left_sw = false;
-                pop_1.GetComponent<Question_and_Record>().LeftAnswer();
+                pop_1.GetComponent<Ring_AnswerRecord>().LeftAnswer();
                 pop_1.GetComponent<AudioSource>().PlayOneShot(sound);
             }
 
@@ -42,7 +42,7 @@ public class foot_sw : MonoBehaviour
             if(right_sw)
             {
                 right_sw = false;
-                pop_1.GetComponent<Question_and_Record>().RightAnswer();
+                pop_1.GetComponent<Ring_AnswerRecord>().RightAnswer();
                 pop_1.GetComponent<AudioSource>().PlayOneShot(sound);
             }
 

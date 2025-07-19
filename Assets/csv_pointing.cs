@@ -46,7 +46,7 @@ public class csv_pointing : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
-        sw = new StreamWriter(@"Assets/ExperimentData/"+filename.text+"_pointing.csv", false, Encoding.UTF8);
+        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_pointing.csv", false, Encoding.UTF8);
         string[] s1 = { "time", "pos_x", "pos_y", "pos_z"};
         string s2 = string.Join(",", s1);
         sw.WriteLine(s2);
