@@ -12,6 +12,8 @@ public class Ring_AnswerRecord : MonoBehaviour
     bool start_sw = false;
     bool question_sw = true;
     bool in_question = false;
+    bool is_csv_written = false;
+
 
     [SerializeField, PersistentAmongPlayMode] private List<int> question_0_list_1 = new List<int>();
     [SerializeField, PersistentAmongPlayMode] private List<int> question_0_list_2 = new List<int>();
@@ -103,67 +105,110 @@ public class Ring_AnswerRecord : MonoBehaviour
         else if (area_now == 1 || area_now == 2)
             ope_state = 1;
         else
+            return;
+
+
+        // 全ての出題が終了したら平均時間を書き出し
+        if (!is_csv_written &&
+            question_0_list_1.Count == 0 && question_0_list_2.Count == 0 &&
+            question_1_list_1.Count == 0 && question_1_list_2.Count == 0)
         {
-            Debug.Log("[INFO] 未定義エリア。出題スキップ");
-            Invoke("PrepareNextQuestion", 1.0f);
+            Debug.Log("[INFO] 全問題出題済み。平均反応時間をCSVに出力します。");
+            csv_writer.GetComponent<csv_RingQuestion>().WriteAverageAnsTime(AnsTime);
+            is_csv_written = true;
             return;
         }
 
-        List<int> list1 = (ope_state == 0) ? question_0_list_1 : question_1_list_1;
-        List<int> list2 = (ope_state == 0) ? question_0_list_2 : question_1_list_2;
-        List<string> charList = (ope_state == 0) ? charactrer_0_list : charactrer_1_list;
-
-        if (list1.Count == 0 && list2.Count == 0)
+        // ope_state 0 の出題処理
+        if (ope_state == 0)
         {
-            Debug.Log($"[INFO] 全問出題済み (ope_state={ope_state})");
-            Invoke("PrepareNextQuestion", 1.0f);
+            if (question_0_list_1.Count == 0 && question_0_list_2.Count == 0)
+            {
+                // 今のフェーズにはもう問題がない（出題せず、次回の area 変化で再開）
+                question_sw = true;
+                return;
+            }
+
+            if (question_0_list_1.Count == 0 && question_0_list_2.Count > 0)
+            {
+                selected_question = question_0_list_2[UnityEngine.Random.Range(0, question_0_list_2.Count)];
+                question_0_list_2.Remove(selected_question);
+            }
+            else
+            {
+                selected_question = question_0_list_1[UnityEngine.Random.Range(0, question_0_list_1.Count)];
+                question_0_list_1.Remove(selected_question);
+            }
+
+            selected_pos = text_pos_list[selected_question - 1];
+            selected_c_num = UnityEngine.Random.Range(0, charactrer_0_list[selected_question - 1].Length);
+            c_now = charactrer_0_list[selected_question - 1].Substring(selected_c_num, 1);
+
+            ShowImage(c_now, selected_pos);
+            charactrer_0_list[selected_question - 1] = charactrer_0_list[selected_question - 1].Remove(selected_c_num, 1);
+
+            in_question = true;
+            timeQuestion = Time.realtimeSinceStartup;
+            Invoke("Disappearance", 2);
             return;
         }
 
-        selected_question = list1.Count == 0 ? GetAndRemoveRandom(list2) : GetAndRemoveRandom(list1);
-        if (selected_question == -1)
+        // ope_state 1 の出題処理
+        if (ope_state == 1)
         {
-            Invoke("PrepareNextQuestion", 1.0f);
+            if (question_1_list_1.Count == 0 && question_1_list_2.Count == 0)
+            {
+                question_sw = true;
+                return;
+            }
+
+            if (question_1_list_1.Count == 0 && question_1_list_2.Count > 0)
+            {
+                selected_question = question_1_list_2[UnityEngine.Random.Range(0, question_1_list_2.Count)];
+                question_1_list_2.Remove(selected_question);
+            }
+            else
+            {
+                selected_question = question_1_list_1[UnityEngine.Random.Range(0, question_1_list_1.Count)];
+                question_1_list_1.Remove(selected_question);
+            }
+
+            selected_pos = text_pos_list[selected_question - 1];
+            selected_c_num = UnityEngine.Random.Range(0, charactrer_1_list[selected_question - 1].Length);
+            c_now = charactrer_1_list[selected_question - 1].Substring(selected_c_num, 1);
+
+            ShowImage(c_now, selected_pos);
+            charactrer_1_list[selected_question - 1] = charactrer_1_list[selected_question - 1].Remove(selected_c_num, 1);
+
+            in_question = true;
+            timeQuestion = Time.realtimeSinceStartup;
+            Invoke("Disappearance", 2);
             return;
         }
 
-        selected_pos = text_pos_list[selected_question - 1];
 
-        string charSet = charList[selected_question - 1];
-        if (string.IsNullOrEmpty(charSet))
+    }
+
+    // 表示用共通関数
+    void ShowImage(string character, Vector2 pos)
+    {
+        if (character == "N")
         {
-            Debug.LogWarning($"[WARN] charList[{selected_question - 1}] が空。スキップ");
-            Invoke("PrepareNextQuestion", 0.5f);
-            return;
-        }
-
-        selected_c_num = UnityEngine.Random.Range(0, charSet.Length);
-        c_now = charSet.Substring(selected_c_num, 1);
-        charList[selected_question - 1] = charSet.Remove(selected_c_num, 1);
-
-        if (c_now == "N")
-        {
-            N_image.GetComponent<RectTransform>().anchoredPosition = selected_pos;
+            N_image.GetComponent<RectTransform>().anchoredPosition = pos;
             N_image.SetActive(true);
         }
         else
         {
-            H_image.GetComponent<RectTransform>().anchoredPosition = selected_pos;
+            H_image.GetComponent<RectTransform>().anchoredPosition = pos;
             H_image.SetActive(true);
         }
-
-        in_question = true;
-        timeQuestion = Time.realtimeSinceStartup;
-        Invoke("Disappearance", 2.0f);
-
-        Debug.Log($"[DEBUG] 出題: {selected_question} Char:{c_now}");
     }
 
     int GetAndRemoveRandom(List<int> list)
     {
         if (list.Count == 0)
         {
-            Debug.LogWarning("[WARN] 空リストから選択しようとしました");
+            //Debug.LogWarning("[WARN] 空リストから選択しようとしました");
             return -1;
         }
         int index = UnityEngine.Random.Range(0, list.Count);
@@ -174,10 +219,24 @@ public class Ring_AnswerRecord : MonoBehaviour
 
     void Disappearance()
     {
-        timeAnswer = Time.realtimeSinceStartup - timeQuestion;
-        csv_writer.GetComponent<csv_RingQuestion>().RightAnswerRecord(ope_state.ToString(), selected_question.ToString(), c_now, "ignored", timeAnswer.ToString());
-        RecordAnsTime(4.0f);
+        float ignoredTime = 4.0f;
+
+        csv_writer.GetComponent<csv_RingQuestion>().RightAnswerRecord(
+            ope_state.ToString(),
+            selected_question.ToString(),
+            c_now,
+            "ignored",
+            ignoredTime.ToString("F4")
+        );
+
+        RecordAnsTime(ignoredTime);
         HideImageAndScheduleNext();
+
+        H_image.SetActive(false);
+        N_image.SetActive(false);
+        //question_sw = true;
+        //in_question = false;
+
     }
 
     public void LeftAnswer()
@@ -190,9 +249,18 @@ public class Ring_AnswerRecord : MonoBehaviour
 
         timeAnswer = Time.realtimeSinceStartup - timeQuestion;
         bool correct = c_now == "H";
-        csv_writer.GetComponent<csv_RingQuestion>().LeftAnswerRecord(ope_state.ToString(), selected_question.ToString(), c_now, correct ? "correct" : "mistake", timeAnswer.ToString());
+        float logTime = correct ? timeAnswer : 4.0f;
+
+        csv_writer.GetComponent<csv_RingQuestion>().LeftAnswerRecord(
+            ope_state.ToString(),
+            selected_question.ToString(),
+            c_now,
+            correct ? "correct" : "mistake",
+            logTime.ToString("F4")
+        );
+
         CancelInvoke("Disappearance");
-        RecordAnsTime(correct ? timeAnswer : 4.0f);
+        RecordAnsTime(logTime);
         HideImageAndScheduleNext();
     }
 
@@ -206,9 +274,18 @@ public class Ring_AnswerRecord : MonoBehaviour
 
         timeAnswer = Time.realtimeSinceStartup - timeQuestion;
         bool correct = c_now == "N";
-        csv_writer.GetComponent<csv_RingQuestion>().RightAnswerRecord(ope_state.ToString(), selected_question.ToString(), c_now, correct ? "correct" : "mistake", timeAnswer.ToString());
+        float logTime = correct ? timeAnswer : 4.0f;
+
+        csv_writer.GetComponent<csv_RingQuestion>().RightAnswerRecord(
+            ope_state.ToString(),
+            selected_question.ToString(),
+            c_now,
+            correct ? "correct" : "mistake",
+            logTime.ToString("F4")
+        );
+
         CancelInvoke("Disappearance");
-        RecordAnsTime(correct ? timeAnswer : 4.0f);
+        RecordAnsTime(logTime);
         HideImageAndScheduleNext();
     }
 
@@ -232,15 +309,16 @@ public class Ring_AnswerRecord : MonoBehaviour
         H_image.SetActive(false);
         N_image.SetActive(false);
         in_question = false;
-        float wait_sec = UnityEngine.Random.Range(2.0f, 5.0f);
+        float wait_sec = UnityEngine.Random.Range(0.5f, 1.0f);
         Invoke("PrepareNextQuestion", wait_sec);
     }
 
+    
     void PrepareNextQuestion()
     {
         question_sw = true;
     }
-
+    
     public void StartCheck()
     {
         start_sw = true;

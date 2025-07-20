@@ -70,4 +70,26 @@ public class csv_RingQuestion: MonoBehaviour
         sw.WriteLine(s2);
         IsCheck = true;
     }
+
+    public void WriteAverageAnsTime(float[,] AnsTime)
+    {
+        if (!IsCheck) return;
+
+        sw.WriteLine();
+        sw.WriteLine("Question,AnswerTime_ave_state0,AnswerTime_ave_state1");
+
+        for (int i = 0; i < 27; i++)
+        {
+            string line = (i + 1).ToString();
+            for (int s = 0; s < 2; s++)
+            {
+                float ave = AnsTime[i, s];
+                line += ",";
+                line += (ave > 0f && ave < 5.0f) ? ave.ToString("F4") : "";
+            }
+            sw.WriteLine(line);
+        }
+
+        Debug.Log("[INFO] 平均反応時間をCSVに追記しました（csv_RingQuestion）");
+    }    
 }

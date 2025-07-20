@@ -22,13 +22,13 @@ public class foot_sw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow))   //KeyCode.KeypadMinus
+        if(Input.GetKey(KeyCode.KeypadMinus))   //KeyCode.LeftArrow
         {
             if(left_sw)
             {
                 left_sw = false;
                 pop_1.GetComponent<Ring_AnswerRecord>().LeftAnswer();
-                pop_1.GetComponent<AudioSource>().PlayOneShot(sound);
+                //pop_1.GetComponent<AudioSource>().PlayOneShot(sound);
             }
 
         }
@@ -37,13 +37,13 @@ public class foot_sw : MonoBehaviour
             left_sw = true;
         }
 
-        if(Input.GetKey(KeyCode.RightArrow))   //KeyCode.KeypadPlus
+        if(Input.GetKey(KeyCode.KeypadPlus))   //KeyCode.RightArrow
         {
             if(right_sw)
             {
                 right_sw = false;
                 pop_1.GetComponent<Ring_AnswerRecord>().RightAnswer();
-                pop_1.GetComponent<AudioSource>().PlayOneShot(sound);
+                //pop_1.GetComponent<AudioSource>().PlayOneShot(sound);
             }
 
         }
