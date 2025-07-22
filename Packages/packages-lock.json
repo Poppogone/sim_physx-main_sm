@@ -8,7 +8,7 @@
       "url": "https://packages.unity.com"
     },
     "com.tobii.gaming.sdk": {
-      "version": "file:C:/Users/sakin/Downloads/TobiiUnitySDK_5.0.0.3/TobiiUnitySDK_5.0.0.3",
+      "version": "file:C:/Users/ninch/Downloads/TobiiUnitySDK_5.0.0.3",
       "depth": 0,
       "source": "local",
       "dependencies": {}
@@ -83,6 +83,15 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.recorder": {
+      "version": "2.5.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.robotics.ros-tcp-connector": {
