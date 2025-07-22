@@ -87,6 +87,9 @@ public class zx120Controller : MonoBehaviour
         if (isProControllerControl) InputProControllers();
 
         UpdateAndPublishMessages();
+
+        Debug.Log($"L: {leftWheel:F3}  R: {rightWheel:F3}");
+        Debug.Log($"Boom: {boomDirection:F3}  Swing: {swingDirection:F3}  Arm: {armDirection:F3}  Bucket: {bucketDirection:F3}");
     }
 
     void UpdateAndPublishMessages()
