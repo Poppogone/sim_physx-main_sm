@@ -8,20 +8,20 @@ using RosMessageTypes.Geometry;
 public class zx120Controller : MonoBehaviour
 {
     ROSConnection ros;
-    private float boomIncreaseCoefficient = 0.271f;
-    private float boomDecreaseCoefficient = 0.216f;
-    private float swingCoefficient = 1.279f;
-    private float armIncreaseCoefficient = 0.482f;
-    private float armDecreaseCoefficient = 0.670f;
-    private float bucketIncreaseCoefficient = 0.991f;
-    private float bucketDecreaseCoefficient = 0.802f;
+    private float boomIncreaseCoefficient = 0.271f * 0.718f;
+    private float boomDecreaseCoefficient = 0.216f * 0.718f;
+    private float swingCoefficient = 1.279f * 0.718f;
+    private float armIncreaseCoefficient = 0.482f * 0.718f;
+    private float armDecreaseCoefficient = 0.670f * 0.718f;
+    private float bucketIncreaseCoefficient = 0.991f * 0.718f;
+    private float bucketDecreaseCoefficient = 0.802f * 0.718f;
 
-    private float boomUpperLimit = Mathf.Deg2Rad * 44.0f;
-    private float boomLowerLimit = Mathf.Deg2Rad * -70.0f;
-    private float armUpperLimit = Mathf.Deg2Rad * 152.0f;
-    private float armLowerLimit = Mathf.Deg2Rad * 30.0f;
-    private float bucketUpperLimit = Mathf.Deg2Rad * 143.0f;
-    private float bucketLowerLimit = Mathf.Deg2Rad * -33f;
+    private float boomUpperLimit = Mathf.Deg2Rad * 0f;//44;
+    private float boomLowerLimit = Mathf.Deg2Rad * -90.0f;//-70
+    private float armUpperLimit = Mathf.Deg2Rad * 120.0f;//152
+    private float armLowerLimit = Mathf.Deg2Rad * 45.0f;//30
+    private float bucketUpperLimit = Mathf.Deg2Rad * 90.0f;//143
+    private float bucketLowerLimit = Mathf.Deg2Rad * -5f;//-33
 
     public static float boomDirection = 0.0f;
     public static float swingDirection = 0.0f;
@@ -29,8 +29,8 @@ public class zx120Controller : MonoBehaviour
     public static float bucketDirection = 0.0f;
     public static float leftWheel = 0.0f;
     public static float rightWheel = 0.0f;
-    private float translationVelocity = 2.5f;//2.5
-    private float rotationVelocity = 2.0f;
+    private float translationVelocity = 2.5f * 0.718f;//2.5
+    private float rotationVelocity = 2.0f * 0.718f;
 
     public string boomTopic = "zx120/boom/cmd";
     public string swingTopic = "zx120/swing/cmd";

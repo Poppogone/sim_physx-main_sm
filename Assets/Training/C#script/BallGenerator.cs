@@ -8,10 +8,13 @@ public class BallGenerator : MonoBehaviour
     public GameObject ballPrefab;
     public int n = 1000;
     public float radius = 0.05f;
-    public float depth = 5;
-    public float width = 3;
+    public float depth = 5.0f;//5
+    public float width = 1.5f;//3
     private bool transform_sw_1;
     private bool transform_sw_2;
+    private bool ball_sw_1 = false;
+    //private bool ball_sw_2 = false;
+
 
     [SerializeField] private GameObject op_state;
 
@@ -38,10 +41,12 @@ public class BallGenerator : MonoBehaviour
             z = Random.Range(-depth / 2.0f + radius, depth / 2.0f - radius);
 
             // ボール移動
-            ball.transform.position = new Vector3(28f + x, y, -2.5f + z);
+            ball.transform.position = new Vector3(27.0f + x, y, -2.5f + z);
 
             //UnityEngine.Debug.Log("Ok");
         }
+
+        ball_sw_1 = true;
     }
 
 
@@ -146,29 +151,33 @@ public class BallGenerator : MonoBehaviour
         {
             if(area_now == 1)
             {
-                GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
-                foreach(GameObject Ball in balls)
+                if (!ball_sw_1)
                 {
-                    //ボール削除
-                    Destroy(Ball);
-                    
-                }
-                
-                for (int i = 0; i < n; i++)
-                {
-                    //ボール生成
-                    ball = Instantiate(ballPrefab) as GameObject;
+                    GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
+                    foreach (GameObject Ball in balls)
+                    {
+                        //ボール削除
+                        Destroy(Ball);
 
-                    // ボール移動範囲設定
-                    x = Random.Range(-width/2.0f + radius, width/2.0f - radius);
-                    y = Random.Range(radius - 0.25f, 4.0f);
-                    z = Random.Range(-depth/2.0f + radius, depth/2.0f - radius);
+                    }
 
-                    // ボール移動
-                    ball.transform.position = new Vector3(28f+x, y, -2.5f+z);
+                    for (int i = 0; i < n; i++)
+                    {
+                        //ボール生成
+                        ball = Instantiate(ballPrefab) as GameObject;
 
-                    UnityEngine.Debug.Log("Trans_1：area0 → area1");
-                    
+                        // ボール移動範囲設定
+                        x = Random.Range(-width / 2.0f + radius, width / 2.0f - radius);
+                        y = Random.Range(radius - 0.25f, 4.0f);
+                        z = Random.Range(-depth / 2.0f + radius, depth / 2.0f - radius);
+
+                        // ボール移動
+                        ball.transform.position = new Vector3(27f + x, y, -2.5f + z);
+
+                        UnityEngine.Debug.Log("Trans_1：area0 → area1");
+
+                    }
+                    ball_sw_1 = true;
                 }
                 transform_sw_1 = false;
             }
@@ -184,29 +193,32 @@ public class BallGenerator : MonoBehaviour
         {
             if(area_now == 2)
             {
-                GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
-                foreach(GameObject Ball in balls)
+                if (ball_sw_1)
                 {
-                    //ボール削除
-                    Destroy(Ball);
+                    GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
+                    foreach (GameObject Ball in balls)
+                    {
+                        //ボール削除
+                        Destroy(Ball);
+                    }
+
+                    for (int i = 0; i < n; i++)
+                    {
+                        //ボール生成
+                        ball = Instantiate(ballPrefab) as GameObject;
+
+                        // ボール移動範囲設定
+                        x = Random.Range(-width / 2.0f + radius, width / 2.0f - radius);
+                        y = Random.Range(radius - 0.25f, 4.0f);
+                        z = Random.Range(-depth / 2.0f + radius, depth / 2.0f - radius);
+
+                        // ボール移動
+                        ball.transform.position = new Vector3(7.5f + x, y, -2.5f + z);
+
+                        UnityEngine.Debug.Log("Trans_2:area3 → area2");
+                    }
+                    ball_sw_1 = false;
                 }
-                
-                for (int i = 0; i < n; i++)
-                {
-                    //ボール生成
-                    ball = Instantiate(ballPrefab) as GameObject;
-
-                    // ボール移動範囲設定
-                    x = Random.Range(-width/2.0f + radius, width/2.0f - radius);
-                    y = Random.Range(radius - 0.25f, 4.0f);
-                    z = Random.Range(-depth/2.0f + radius, depth/2.0f - radius);
-
-                    // ボール移動
-                    ball.transform.position = new Vector3(8.25f+x, y, -2.5f+z);
-
-                    UnityEngine.Debug.Log("Trans_2:area3 → area2");
-                }
-
                 transform_sw_2 = false;
             }
         }

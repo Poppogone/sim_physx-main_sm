@@ -23,7 +23,7 @@ public class start_check : MonoBehaviour
         if(check && sw)
         {
             csv_writer.GetComponent<csv_start>().StartCheck();
-            pop_1.GetComponent<question_and_record_1>().StartCheck();
+            pop_1.GetComponent<Ring_AnswerRecord>().StartCheck();
             sw = false;
         }
     }

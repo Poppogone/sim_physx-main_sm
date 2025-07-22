@@ -83,7 +83,7 @@ public class Ring_AnswerRecord : MonoBehaviour
             new Vector2(770,160), new Vector2(940,160), new Vector2(1110,160)
         });
 
-        StartCheck();
+        //StartCheck();
     }
 
     void Update()
@@ -124,7 +124,7 @@ public class Ring_AnswerRecord : MonoBehaviour
         {
             if (question_0_list_1.Count == 0 && question_0_list_2.Count == 0)
             {
-                // 今のフェーズにはもう問題がない（出題せず、次回の area 変化で再開）
+                // 今のフェーズにはもう問題がない
                 question_sw = true;
                 return;
             }
@@ -309,7 +309,7 @@ public class Ring_AnswerRecord : MonoBehaviour
         H_image.SetActive(false);
         N_image.SetActive(false);
         in_question = false;
-        float wait_sec = UnityEngine.Random.Range(0.5f, 1.0f);
+        float wait_sec = UnityEngine.Random.Range(2.0f, 5.0f);
         Invoke("PrepareNextQuestion", wait_sec);
     }
 
