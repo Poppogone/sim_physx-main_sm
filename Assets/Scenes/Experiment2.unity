@@ -90599,8 +90599,8 @@ MonoBehaviour:
   armTopic: zx120/arm/cmd
   bucketTopic: zx120/bucket/cmd
   tracksTopic: zx120/tracks/cmd_vel
-  isKeyboardControl: 0
-  isControllerControl: 1
+  isKeyboardControl: 1
+  isControllerControl: 0
   isProControllerControl: 0
   switchSound: {fileID: 0}
   DriverCamera: {fileID: 592123849}
@@ -113654,7 +113654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2026008611
 MonoBehaviour:
   m_ObjectHideFlags: 0
