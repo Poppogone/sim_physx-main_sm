@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class csv_target_pos_2 : MonoBehaviour
 {
+    [Header("Logging Control")]
+    public bool enabledLogging = false;
+
     private StreamWriter sw2;
     private StreamWriter sw4;
     private StreamWriter sw6;
@@ -37,6 +40,7 @@ public class csv_target_pos_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!enabledLogging) return;
         if (IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
@@ -100,6 +104,8 @@ public class csv_target_pos_2 : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
+        if (!enabledLogging) return;
+
         sw2 = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_target_pos_2.csv", false, Encoding.UTF8);
         string[] s1_2 = { "time", "pos_x", "pos_y", "pos_z"};
         string s2_2 = string.Join(",", s1_2);

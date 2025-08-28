@@ -9,6 +9,9 @@ using Tobii.Gaming;
 
 public class csv_eye : MonoBehaviour
 {
+    [Header("Logging Control")]
+    public bool enabledLogging = false;
+
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
@@ -23,6 +26,7 @@ public class csv_eye : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!enabledLogging) return;
         GazePoint gazePoint = TobiiAPI.GetGazePoint();
         timeNow = Time.realtimeSinceStartup - timeStart;
 
@@ -56,6 +60,7 @@ public class csv_eye : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
+        if (!enabledLogging) return;
         sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_eye.csv", false, Encoding.UTF8);
         string[] s1 = { "time", "is_recent","pos_x", "pos_y" };
         string s2 = string.Join(",", s1);

@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class csv_collision : MonoBehaviour
 {
+    [Header("Logging Control")]
+    public bool enabledLogging = false;   // Inspector のチェックでON/OFF
+
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
@@ -22,6 +25,7 @@ public class csv_collision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!enabledLogging) return;
         if (IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
@@ -74,6 +78,7 @@ public class csv_collision : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
+        if (!enabledLogging) return;
         sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_collision.csv", false, Encoding.UTF8);
         string[] s1 = { "time", "object", "is_target"};
         string s2 = string.Join(",", s1);

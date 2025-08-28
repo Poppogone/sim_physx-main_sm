@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class csv_ball : MonoBehaviour
 {
+    [Header("Logging Control")]
+    public bool enabledLogging = false;   // ← Inspector から ON/OFF 可能
+
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
@@ -31,6 +34,7 @@ public class csv_ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!enabledLogging) return;
         if (IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
@@ -46,16 +50,19 @@ public class csv_ball : MonoBehaviour
     
     public void CountPickBall()
     {
+        if (!enabledLogging) return;
         pickball++;
         check = true;
     }
     public void CountGetBall()
     {
+        if (!enabledLogging) return;
         getball++;
         check = true;
     }
     public void CountGetBall2()
     {
+        if (!enabledLogging) return;
         getball2++;
         check = true;
     }
@@ -78,6 +85,7 @@ public class csv_ball : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
+        if (!enabledLogging) return;    // チェックが入っていない場合はファイルが作られない
         sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_ball_count.csv", false, Encoding.UTF8);
         string[] s1 = { "time", "pick", "get1", "get2"};
         string s2 = string.Join(",", s1);

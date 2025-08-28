@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class csv_camera : MonoBehaviour
 {
+    [Header("Logging Control")]
+    public bool enabledLogging = false;   // Inspector のチェックでON/OFF
+
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
@@ -32,6 +35,7 @@ public class csv_camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!enabledLogging) return;
         if (IsCheck && drone != null)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
@@ -105,6 +109,7 @@ public class csv_camera : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
+        if (!enabledLogging) return;
         sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_camera.csv", false, Encoding.UTF8);
         string[] s1 = { "time","is_free", "r","phi", "theta" };
         string s2 = string.Join(",", s1);

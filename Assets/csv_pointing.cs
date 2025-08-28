@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class csv_pointing : MonoBehaviour
 {
+    [Header("Logging Control")]
+    public bool enabledLogging = false;
+
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
@@ -27,6 +30,7 @@ public class csv_pointing : MonoBehaviour
     }
     public void PosCheck()
     {
+        if (!enabledLogging) return;
         if (IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
@@ -46,6 +50,7 @@ public class csv_pointing : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
+        if (!enabledLogging) return;
         sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_pointing.csv", false, Encoding.UTF8);
         string[] s1 = { "time", "pos_x", "pos_y", "pos_z"};
         string s2 = string.Join(",", s1);

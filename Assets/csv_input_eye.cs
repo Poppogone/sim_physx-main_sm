@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class csv_input_eye : MonoBehaviour
 {
+    [Header("Logging Control")]
+    public bool enabledLogging = false;
+
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
@@ -48,6 +51,7 @@ public class csv_input_eye : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!enabledLogging) return;
         if (IsCheck)
         {
             GazePoint gazePoint = TobiiAPI.GetGazePoint();
@@ -123,6 +127,7 @@ public class csv_input_eye : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
+        if (!enabledLogging) return;
         sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_inputeye.csv", false, Encoding.UTF8);
         string[] s1 = { "time","kenki_pos_x","kenki_pos_y","kenki_pos_z","kenki_ori_y","swing","boom","arm","bucket","h_pos_x","h_pos_y","h_pos_z","h_ang_x","h_ang_y","h_ang_z","is_free", "is_recent","pos_x", "pos_y","filtered_pos_x", "filtered_pos_y" };
         string s2 = string.Join(",", s1);

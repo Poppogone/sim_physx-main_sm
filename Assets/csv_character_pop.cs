@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class csv_character_pop : MonoBehaviour
 {
+    [Header("Logging Control")]
+    public bool enabledLogging = false;   // Inspector のチェックでON/OFF
+
     private StreamWriter sw;
     private float timeNow;
     private float timeStart;
@@ -27,6 +30,7 @@ public class csv_character_pop : MonoBehaviour
 
     public void LeftAnswerRecord(string area, string question, string c, string answer_state, string ans_time)
     {
+        if (!enabledLogging) return;
         if (IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
@@ -37,6 +41,7 @@ public class csv_character_pop : MonoBehaviour
     }
     public void RightAnswerRecord(string area, string question, string c, string answer_state, string ans_time)
     {
+        if (!enabledLogging) return;
         if (IsCheck)
         {
             timeNow = Time.realtimeSinceStartup - timeStart;
@@ -64,6 +69,7 @@ public class csv_character_pop : MonoBehaviour
 
     public void MakeFile(Text filename)
     {
+        if (!enabledLogging) return;
         sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_character_pop.csv", false, Encoding.UTF8);
         string[] s1 = { "Time", "Area", "LorR", "Question", "Character", "State", "Answer_Time"};
         string s2 = string.Join(",", s1);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class start_check : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class start_check : MonoBehaviour
     bool check;
     bool sw;
     // Start is called before the first frame update
+
+    [Header("Filename (UI Text)")]
+    public Text filenameText; 
+
     void Start()
     {
         csv_writer = GameObject.Find("CSV writer");
@@ -24,6 +29,15 @@ public class start_check : MonoBehaviour
         {
             csv_writer.GetComponent<csv_start>().StartCheck();
             pop_1.GetComponent<Ring_AnswerRecord>().StartCheck();
+
+            // ControllerLogのログ開始（enabledLogging は true にしておく）
+            var ctrl = csv_writer.GetComponent<csv_ControllerLog>();
+            if (ctrl != null && ctrl.enabledLogging && filenameText != null)
+            {
+                ctrl.MakeFile(filenameText);
+                Debug.Log("[start_check] csv_ControllerLog.MakeFile called");
+            }
+
             sw = false;
         }
     }
