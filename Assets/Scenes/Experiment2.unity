@@ -5404,7 +5404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51c49bce76b88942914e95ee4a9819a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  question_0_list_1: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000015000000160000001700000018000000190000001a0000001b000000
+  question_0_list_1: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   question_0_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_0_list:
   - HN
@@ -5426,7 +5426,7 @@ MonoBehaviour:
   - HN
   - HN
   - HN
-  - N
+  - HN
   - HN
   - HN
   - HN
@@ -72845,6 +72845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e558eb22be181e84caff7b9de8b4b947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filenameText: {fileID: 601600371}
 --- !u!1001 &1336030153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98248,6 +98249,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1865782471}
+        m_TargetAssemblyTypeName: csv_ControllerLog, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1789559651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104432,6 +104445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf4d7283cd7c3b438d553bead1b2a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
   target2: {fileID: 600960126}
   target4: {fileID: 987886984}
   target6: {fileID: 432838466}
@@ -104462,6 +104476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1079ddf97e4274a837a7ad57c1db32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
 --- !u!114 &1865782461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104469,12 +104484,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865782457}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42fc9420eb7ccb047b118cba0cd1a70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabledLogging: 0
+  enabledLogging: 1
 --- !u!114 &1865782462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104487,6 +104502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e6556de3085b849a0e355912b5464c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
   target1: {fileID: 537949913}
   target3: {fileID: 1006355455}
   target5: {fileID: 18976978}
@@ -104503,6 +104519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5252e9b0ae3d3f489b4fa4cc22165ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
   nail: {fileID: 258474608}
 --- !u!114 &1865782464
 MonoBehaviour:
@@ -104516,6 +104533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f57ed6aa1aa28c42901a5f620807502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 1
   op_state: {fileID: 50334071}
 --- !u!114 &1865782465
 MonoBehaviour:
@@ -104529,6 +104547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1c033a94aa8a646a034cf28bc43634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
   base_link: {fileID: 4719085804421732177}
   swing_joint: {fileID: 4719085803562181316}
   boom_joint: {fileID: 4719085804080976639}
@@ -104548,6 +104567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8535812bbf6d0346bcccc577cff8350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
   drone: {fileID: 441214537}
 --- !u!114 &1865782467
 MonoBehaviour:
@@ -104561,6 +104581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d1c28e131b55741b71f5b2f6875e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
 --- !u!114 &1865782468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104573,6 +104594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8597f18317e50542b66dc86220847bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
 --- !u!114 &1865782469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104585,6 +104607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11733d36f81dc444a85b5aae7628bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 0
 --- !u!114 &1865782470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104597,6 +104620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d192f54c1d028314ab9823cbe26b088a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 1
 --- !u!114 &1865782471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104609,7 +104633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8343c067b439cc4a8587bac842eabeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledLogging: 1
   sampleInterval: 0.02
+  epsilonZero: 0.01
 --- !u!1 &1868071451
 GameObject:
   m_ObjectHideFlags: 0
