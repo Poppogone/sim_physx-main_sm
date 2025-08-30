@@ -43,19 +43,19 @@ public class csv_ControllerLog : MonoBehaviour
         float timeNow = Time.realtimeSinceStartup - timeStart;
 
         // zx120Controller から6値取得
-        float left   = zx120Controller.leftWheel;
-        float right  = zx120Controller.rightWheel;
+        float crawlerL  = zx120Controller.leftWheel;
+        float crawlerR  = zx120Controller.rightWheel;
         float boom   = zx120Controller.boomDirection;
-        float swing  = zx120Controller.swingDirection;
+        float turn   = zx120Controller.swingDirection;
         float arm    = zx120Controller.armDirection;
         float bucket = zx120Controller.bucketDirection;
 
         // ★ 「6つすべてが0（≒しきい値以内）」ならアイドル
         bool allZero =
-            Mathf.Abs(left)   <= epsilonZero &&
-            Mathf.Abs(right)  <= epsilonZero &&
+            Mathf.Abs(crawlerL)   <= epsilonZero &&
+            Mathf.Abs(crawlerR)  <= epsilonZero &&
             Mathf.Abs(boom)   <= epsilonZero &&
-            Mathf.Abs(swing)  <= epsilonZero &&
+            Mathf.Abs(turn)  <= epsilonZero &&
             Mathf.Abs(arm)    <= epsilonZero &&
             Mathf.Abs(bucket) <= epsilonZero;
 
@@ -72,11 +72,11 @@ public class csv_ControllerLog : MonoBehaviour
         // 1行出力（H 列が IdleTime）
         string[] row = {
             timeNow.ToString(),
-            left.ToString(),
-            right.ToString(),
-            boom.ToString(),
-            swing.ToString(),
+            crawlerL.ToString(),
+            crawlerR.ToString(),
+            turn.ToString(),
             arm.ToString(),
+            boom.ToString(),
             bucket.ToString(),
             idleAccum.ToString("F3")   // ← H列
         };
@@ -100,9 +100,9 @@ public class csv_ControllerLog : MonoBehaviour
         sw = new StreamWriter(path, false, Encoding.UTF8);
 
         // A〜K列までのヘッダを作る（K=11列目に TotalIdleTime の見出し）
-        // 列: A Time, B left, C right, D boom, E swing, F arm, G bucket, H IdleTime, I (空), J (空), K TotalIdleTime
+        // 列: A Time, B CrawlerL, C CrawlerR, D Turn, E Arm, F Boom, G Bucket, H IdleTime, I (空), J (空), K TotalIdleTime
         string[] header = {
-            "Time","leftWheel","rightWheel","boomDirection","swingDirection","armDirection","bucketDirection",
+            "Time","CrawlerL","CrawlerR","Turn","Arm","Boom","Bucket",
             "IdleTime","","","TotalIdleTime"
         };
         sw.WriteLine(string.Join(",", header));
