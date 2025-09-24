@@ -8,8 +8,8 @@ using RosMessageTypes.Geometry;
 public class zx120Controller : MonoBehaviour
 {
     ROSConnection ros;
-    private float boomIncreaseCoefficient = 0.271f * 0.718f;
-    private float boomDecreaseCoefficient = 0.216f * 0.718f;
+    private float boomIncreaseCoefficient = 0.271f * 0.718f * 1.374f;
+    private float boomDecreaseCoefficient = 0.216f * 0.718f * 1.374f;
     private float swingCoefficient = 1.279f * 0.718f;
     private float armIncreaseCoefficient = 0.482f * 0.718f;
     private float armDecreaseCoefficient = 0.670f * 0.718f;
@@ -29,8 +29,8 @@ public class zx120Controller : MonoBehaviour
     public static float bucketDirection = 0.0f;
     public static float leftWheel = 0.0f;
     public static float rightWheel = 0.0f;
-    private float translationVelocity = 2.5f * 0.718f;//2.5
-    private float rotationVelocity = 2.0f * 0.718f;
+    private float translationVelocity = 2.5f * 0.718f * 0.773f;//2.5
+    private float rotationVelocity = 2.0f * 0.718f * 0.773f;
 
     public string boomTopic = "zx120/boom/cmd";
     public string swingTopic = "zx120/swing/cmd";
