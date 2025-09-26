@@ -1,0 +1,11 @@
+Name,X,Y
+Obstacle_Corn,334.3256,-19.2558
+Obstacle_Corn,-159.6279,290.5116
+
+Result,Name,Distance
+Match,Obstacle_Corn,244.35
+Match,Obstacle_Corn,263.62
+FalseNegative,Obstacle_Block,N/A
+AverageDistance,,253.98
+FalseNegativeCount,,1
+FalsePositiveCount,,0

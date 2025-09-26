@@ -12,6 +12,7 @@ TagManager:
   - Stone
   - Nail
   - Target
+  - MapCapture
   layers:
   - Default
   - TransparentFX
