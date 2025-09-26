@@ -1,0 +1,11 @@
+Name,X,Y
+ExportButton,529,510
+Obstacle_Corn,506.7908,-37.67444
+
+Result,Name,Distance
+FalseNegative,Correct_Corn1,N/A
+FalsePositive,ExportButton,N/A
+FalsePositive,Obstacle_Corn,N/A
+AverageDistance,,N/A
+FalseNegativeCount,,1
+FalsePositiveCount,,2

@@ -10,13 +10,23 @@ public class SAGATSaver : MonoBehaviour
     public RectTransform workspace;        // Panel_Answer を割り当て
     public string correctFile = "Assets/SAGATData_2025/SAGAT_Correct.csv";
 
+    private bool isSaved = false; 
+
     void Start()
     {
-        saveButton.onClick.AddListener(SaveAndEvaluate);
+        if (saveButton != null)
+            saveButton.onClick.AddListener(SaveAndEvaluate);
     }
 
-    void SaveAndEvaluate()
+    public void SaveAndEvaluate()
     {
+        if (isSaved)
+        {
+            Debug.LogWarning("Already saved.");
+            return;
+        }
+        isSaved = true;
+        
         // 保存先フォルダ（Assets/SAGATData_2025）
         string folderPath = Path.Combine(Application.dataPath, "SAGATData_2025");
 
@@ -127,6 +137,12 @@ public class SAGATSaver : MonoBehaviour
 
         Debug.Log("Saved with evaluation: " + path);
     }
+
+    public bool IsAlreadySaved()
+    {
+        return isSaved;
+    }
+
 
     List<ObstacleData> LoadCsv(string path)
     {

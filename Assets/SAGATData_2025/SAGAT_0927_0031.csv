@@ -1,0 +1,9 @@
+Name,X,Y
+ExportButton,529,510
+
+Result,Name,Distance
+FalseNegative,Correct_Corn1,N/A
+FalsePositive,ExportButton,N/A
+AverageDistance,,N/A
+FalseNegativeCount,,1
+FalsePositiveCount,,1
