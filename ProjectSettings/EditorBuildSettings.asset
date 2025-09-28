@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Heatmap.unity
     guid: 493272ec213df984585a89dac0729a82
+  - enabled: 1
+    path: Assets/Scenes/SAGATScene.unity
+    guid: 8e21f958e82ddc74b8f74da2b0428c12
   m_configObjects: {}

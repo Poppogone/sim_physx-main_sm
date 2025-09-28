@@ -1,0 +1,7 @@
+Name,X,Y
+
+Result,Name,Distance
+FalseNegative,Correct_Corn1,N/A
+AverageDistance,,N/A
+FalseNegativeCount,,1
+FalsePositiveCount,,0
