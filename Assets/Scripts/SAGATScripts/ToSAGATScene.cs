@@ -15,7 +15,7 @@ public class ToSAGATScene : MonoBehaviour
     [Tooltip("このColliderをTriggerにする（推奨）")]
     public bool forceTrigger = true;
 
-    private static bool hasActivated = false; // 🚩 全体で一度だけ有効にするフラグ
+    private static bool hasActivated = false; // 全体で一度だけ有効にするフラグ
     private bool fired = false;               // このオブジェクトでの発火防止
 
     void Awake()
@@ -50,7 +50,7 @@ public class ToSAGATScene : MonoBehaviour
         }
 
         SetAlpha(1f);  // 即座に黒画面
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(3f);
         SceneManager.LoadScene(targetSceneName, LoadSceneMode.Single);
     }
 
