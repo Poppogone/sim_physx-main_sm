@@ -92064,7 +92064,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643988194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 556682bf7e8759242af60a880405b1a0, type: 3}
   m_Name: 
@@ -126888,7 +126888,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 2
   m_Mass: 500
-  m_ParentAnchorPosition: {x: 0.15999988, y: 0.781, z: 0.14000033}
+  m_ParentAnchorPosition: {x: 0.15999988, y: 0.781, z: 0.13999937}
   m_ParentAnchorRotation: {x: 0.7071069, y: 0, z: 0, w: 0.7071069}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -127264,7 +127264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setpointTopicName: zx120/arm/cmd
-  initTargetPos: 2
+  initTargetPos: 0
 --- !u!4 &4719085804185901224
 Transform:
   m_ObjectHideFlags: 0
@@ -127627,7 +127627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4719085804356376904}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 13.41, y: 0, z: 5.06}
+  m_LocalPosition: {x: 20.32, y: 0, z: 5.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4719085803456055500}
@@ -130320,7 +130320,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 2
   m_Mass: 100
-  m_ParentAnchorPosition: {x: -0.00000013411045, y: 2.519008, z: 0}
+  m_ParentAnchorPosition: {x: -0.00000013411045, y: 2.5190084, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0, w: 1.0000002}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0, w: 1}
