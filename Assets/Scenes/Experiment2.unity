@@ -5466,11 +5466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51c49bce76b88942914e95ee4a9819a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  question_0_list_1: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  question_0_list_1: 01000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   question_0_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_0_list:
   - HN
-  - HN
+  - N
   - HN
   - HN
   - HN
@@ -73735,7 +73735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331629573}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10.5, y: 0, z: 14.5}
+  m_LocalPosition: {x: 10.5, y: 0, z: 14}
   m_LocalScale: {x: 4, y: 0.0001, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92132,7 +92132,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643988194}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 556682bf7e8759242af60a880405b1a0, type: 3}
   m_Name: 
@@ -94411,6 +94411,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1865782471}
         m_TargetAssemblyTypeName: csv_ControllerLog, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1865782472}
+        m_TargetAssemblyTypeName: csv_zx120_position, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:
@@ -106230,13 +106242,14 @@ GameObject:
   - component: {fileID: 1865782467}
   - component: {fileID: 1865782470}
   - component: {fileID: 1865782471}
+  - component: {fileID: 1865782472}
   m_Layer: 0
   m_Name: CSV writer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1865782458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106440,6 +106453,20 @@ MonoBehaviour:
   enabledLogging: 1
   sampleInterval: 0.02
   epsilonZero: 0.01
+--- !u!114 &1865782472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865782457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac90801b5f246b94387a8ed3eeed803f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabledLogging: 1
+  zx120: {fileID: 4719085804356376901}
 --- !u!1 &1868071451
 GameObject:
   m_ObjectHideFlags: 0
@@ -127400,7 +127427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setpointTopicName: zx120/arm/cmd
-  initTargetPos: 0
+  initTargetPos: 2
 --- !u!4 &4719085804185901224
 Transform:
   m_ObjectHideFlags: 0
@@ -127778,7 +127805,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4719085804356376904}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de755eb9608519242b24f7ffc65aad35, type: 3}
   m_Name: 
@@ -127842,7 +127869,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4719085804356376904}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 170593841fbf9d443b5de30afda58e94, type: 3}
   m_Name: 
@@ -127912,7 +127939,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4719085804356376904}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25ab774dd94201142b8ce814548fe7c6, type: 3}
   m_Name: 
