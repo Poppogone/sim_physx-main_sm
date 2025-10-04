@@ -5466,11 +5466,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51c49bce76b88942914e95ee4a9819a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  question_0_list_1: 01000000020000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000150000001600000017000000190000001a0000001b000000
+  question_0_list_1: 01000000020000000300000004000000050000000600000007000000080000000b0000000d0000000e000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   question_0_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_0_list:
   - HN
   - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - N
+  - N
+  - HN
+  - N
+  - HN
+  - HN
   - N
   - HN
   - HN
@@ -5481,18 +5493,6 @@ MonoBehaviour:
   - HN
   - HN
   - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - N
   - HN
   - HN
   - HN
@@ -94433,6 +94433,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1865782469}
+        m_TargetAssemblyTypeName: csv_operation_state, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1692331429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106306,7 +106318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42fc9420eb7ccb047b118cba0cd1a70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabledLogging: 1
+  enabledLogging: 0
 --- !u!114 &1865782462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106350,7 +106362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f57ed6aa1aa28c42901a5f620807502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabledLogging: 1
+  enabledLogging: 0
   op_state: {fileID: 50334071}
 --- !u!114 &1865782465
 MonoBehaviour:
@@ -106419,12 +106431,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865782457}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d11733d36f81dc444a85b5aae7628bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabledLogging: 0
+  enabledLogging: 1
 --- !u!114 &1865782470
 MonoBehaviour:
   m_ObjectHideFlags: 0
