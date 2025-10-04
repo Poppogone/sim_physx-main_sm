@@ -51,6 +51,12 @@ public class start_check : MonoBehaviour
                 pos.MakeFile(filenameText.text);
             }
             
+            var op = csv_writer.GetComponent<csv_operation_state>();
+            if (op != null && op.enabledLogging && filenameText != null)
+            {
+                op.MakeFile(filenameText.text);
+            }
+
             sw = false; // 二重実行防止
         }
 

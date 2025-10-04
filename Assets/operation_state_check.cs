@@ -14,7 +14,7 @@ public class operation_state_check : MonoBehaviour
     GameObject csv_writer;
 
     // area1の範囲（X:20以上28未満, Z:3以上8未満）
-    private float[] area1_x = new float[] { 20.0f, 28.0f };
+    private float[] area1_x = new float[] { 18.0f, 25.0f };
     private float[] area1_z = new float[] { 3.0f, 8.0f };
 
     void Start()

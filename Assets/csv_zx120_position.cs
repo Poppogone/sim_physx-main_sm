@@ -22,6 +22,7 @@ public class csv_zx120_position : MonoBehaviour
 
     // ====== 外部から呼ぶAPI ======
 
+    /*
     // UI Text を受け取る互換版
     public void MakeFile(Text filename)
     {
@@ -32,8 +33,9 @@ public class csv_zx120_position : MonoBehaviour
         }
         MakeFile(filename.text);
     }
+    */
 
-    // 推奨：string 版（StartLineで一度だけ呼ぶ）
+    // string 版（StartLineで一度だけ呼ぶ）
     public void MakeFile(string baseName)
     {
         if (!enabledLogging) return;
@@ -108,5 +110,13 @@ public class csv_zx120_position : MonoBehaviour
                 sw = null;
             }
         }
+    }
+
+    public void Close()
+    {
+        tracing = false;
+        CloseIfOpen();
+        IsCheck = false;
+        //Debug.Log("[csv_zx120_position] Close called -> file closed");
     }
 }
