@@ -70,12 +70,24 @@ public class csv_RingQuestion: MonoBehaviour
     public void MakeFile(Text filename)
     {
         if (!enabledLogging) return;
-        sw = new StreamWriter(@"Assets/ExperimentData_2025/"+filename.text+"_RingQuestion.csv", false, Encoding.UTF8);
-        string[] s1 = { "Time", "Area", "LorR", "Question", "Character", "State", "Answer_Time"};
-        string s2 = string.Join(",", s1);
-        sw.WriteLine(s2);
+        if (IsCheck) return; // 二重オープン防止（保険）
+
+        var dir = @"Assets/ExperimentData_2025";
+        System.IO.Directory.CreateDirectory(dir);
+
+        var path = System.IO.Path.Combine(dir, filename.text + "_RingQuestion.csv");
+
+        // ★ポイント：FileStream + FileShare.Read で開く（Unityの読み取りと共存）
+        var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read);
+        sw = new StreamWriter(fs, Encoding.UTF8) { AutoFlush = true };
+
+        string[] header = { "Time", "Area", "LorR", "Question", "Character", "State", "Answer_Time" };
+        sw.WriteLine(string.Join(",", header));
         IsCheck = true;
+
+        //Debug.Log("[csv_RingQuestion] MakeFile started: " + path);
     }
+
 
     public void WriteAverageAnsTime(float[,] AnsTime)
     {

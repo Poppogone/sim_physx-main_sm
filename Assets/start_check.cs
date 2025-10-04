@@ -25,23 +25,37 @@ public class start_check : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(check && sw)
+        if (check && sw)
         {
-            csv_writer.GetComponent<csv_start>().StartCheck();
-            pop_1.GetComponent<Ring_AnswerRecord>().StartCheck();
+            var st = csv_writer.GetComponent<csv_start>();
+            if (st != null) st.StartCheck();
 
-            /*
-            // ControllerLogのログ開始（enabledLogging は true にしておく）
+            var ring = pop_1.GetComponent<Ring_AnswerRecord>();
+            if (ring != null) ring.StartCheck();
+
+            var ringQA = csv_writer.GetComponent<csv_RingQuestion>();
+            if (ringQA != null && ringQA.enabledLogging && filenameText != null)
+            {
+                ringQA.MakeFile(filenameText);   // RingQuestion CSV開始
+            }
+
             var ctrl = csv_writer.GetComponent<csv_ControllerLog>();
             if (ctrl != null && ctrl.enabledLogging && filenameText != null)
             {
-                ctrl.MakeFile(filenameText);
-                Debug.Log("[start_check] csv_ControllerLog.MakeFile called");
+                ctrl.MakeFile(filenameText.text);   // ControllerLog CSV開始（string版推奨）
             }
-            */
-            sw = false;
+
+            var pos = csv_writer.GetComponent<csv_zx120_position>();
+            if (pos != null && pos.enabledLogging && filenameText != null)
+            {
+                pos.MakeFile(filenameText.text);
+            }
+            
+            sw = false; // 二重実行防止
         }
+
     }
+
     
     void OnCollisionEnter(Collision collision)
     {

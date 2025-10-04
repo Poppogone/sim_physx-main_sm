@@ -85,39 +85,38 @@ public class csv_ControllerLog : MonoBehaviour
         nextSampleTime += sampleInterval;
     }
 
-    public void MakeFile(Text filename)
+    public void MakeFile(string baseName)
     {
         if (!enabledLogging) return;
+        if (IsCheck) return;  // 冪等ガード
 
-#if UNITY_EDITOR
+        // 保存先ディレクトリ（常に Assets/ExperimentData_2025）
         string dir = Path.Combine(Application.dataPath, "ExperimentData_2025");
-#else
-        string dir = Path.Combine(Application.persistentDataPath, "ExperimentData_2025");
-#endif
         Directory.CreateDirectory(dir);
 
-        path = Path.Combine(dir, filename.text + "_ControllerLog.csv");
-        sw = new StreamWriter(path, false, Encoding.UTF8);
+        path = Path.Combine(dir, baseName + "_ControllerLog.csv");
 
-        // A〜K列までのヘッダを作る（K=11列目に TotalIdleTime の見出し）
-        // 列: A Time, B CrawlerL, C CrawlerR, D Turn, E Arm, F Boom, G Bucket, H IdleTime, I (空), J (空), K TotalIdleTime
+        // FileShare.Read で開く + AutoFlush = true
+        var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read);
+        sw = new StreamWriter(fs, new UTF8Encoding(false)) { AutoFlush = true };
+
+        // A〜K列のヘッダ行
         string[] header = {
             "Time","CrawlerL","CrawlerR","Turn","Arm","Boom","Bucket",
             "IdleTime","","","TotalIdleTime"
         };
         sw.WriteLine(string.Join(",", header));
-        sw.Flush();
 
+        // 初期化
         IsCheck = true;
         timeStart = Time.realtimeSinceStartup;
         nextSampleTime = Time.unscaledTime;
-
-        // 初期化
         idleAccum = 0f;
         totalIdleTime = 0f;
 
         Debug.Log("[csv_ControllerLog] Start logging: " + path);
     }
+
 
     public void Close()
     {
