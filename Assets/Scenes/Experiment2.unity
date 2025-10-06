@@ -5466,23 +5466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51c49bce76b88942914e95ee4a9819a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  question_0_list_1: 01000000020000000300000004000000050000000600000007000000080000000b0000000d0000000e000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  question_0_list_1: 020000000300000004000000050000000600000007000000090000000a0000000b0000000d0000000e0000000f00000011000000120000001300000014000000150000001700000018000000190000001a0000001b000000
   question_0_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_0_list:
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - N
-  - N
-  - HN
-  - N
-  - HN
-  - HN
   - N
   - HN
   - HN
@@ -5490,7 +5476,21 @@ MonoBehaviour:
   - HN
   - HN
   - HN
+  - H
   - HN
+  - HN
+  - HN
+  - N
+  - HN
+  - HN
+  - HN
+  - H
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - H
   - HN
   - HN
   - HN
@@ -50238,7 +50238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905578034}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10.5, y: 0, z: 5.37}
+  m_LocalPosition: {x: 19.02, y: 0, z: 14.39}
   m_LocalScale: {x: 4, y: 0.0001, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -50257,8 +50257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSceneName: SAGATScene
-  blackoutImage: {fileID: 564599901}
-  forceTrigger: 1
+  rearmCooldown: 1
+  alsoHideUI: 1
 --- !u!1 &906548525
 GameObject:
   m_ObjectHideFlags: 0
@@ -104531,6 +104531,49 @@ MonoBehaviour:
     modifyNameEnabled: 1
   modified: 0
   modifiedChildren: 0
+--- !u!1 &1843919300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843919302}
+  - component: {fileID: 1843919301}
+  m_Layer: 0
+  m_Name: CameraScanner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1843919301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843919300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8182db7ed50fd41b11b84ec2c4e34f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1843919302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843919300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 57
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1844722453
 Mesh:
   m_ObjectHideFlags: 0
@@ -121596,6 +121639,11 @@ MonoBehaviour:
   ringElapsed: 0
   posLogPath: 
   posElapsed: 0
+  zx120Snapshot:
+    worldPosition: {x: 0, y: 0, z: 0}
+    worldRotation: {x: 0, y: 0, z: 0, w: 0}
+    rbVelocity: {x: 0, y: 0, z: 0}
+    rbAngularVelocity: {x: 0, y: 0, z: 0}
 --- !u!4 &2109587846
 Transform:
   m_ObjectHideFlags: 0

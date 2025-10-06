@@ -3,17 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class SAGATExit : MonoBehaviour
 {
+    public string sagatSceneName = "SAGATScene";
+
     public void OnClickReturn()
     {
-        // 一時停止解除
-        if (TestDataManager.I != null)
-            TestDataManager.I.ResumeFromSAGAT();
+        Debug.Log("[SAGATExit] Unloading SAGATScene...");
+        var sagat = SceneManager.GetSceneByName(sagatSceneName);
+        if (!sagat.IsValid())
+        {
+            Debug.LogWarning($"[SAGATExit] Scene '{sagatSceneName}' not found.");
+            return;
+        }
 
-        // 記録しておいた元シーンへ
-        string target = (TestDataManager.I != null && !string.IsNullOrEmpty(TestDataManager.I.lastSceneName))
-            ? TestDataManager.I.lastSceneName
-            : "Experiment2";  // フォールバック
-
-        SceneManager.LoadScene(target, LoadSceneMode.Single);
+        SceneManager.UnloadSceneAsync(sagat).completed += (op) =>
+        {
+            Debug.Log("[SAGATExit] SAGATScene unloaded.");
+            ToSAGATScene.ReactivateExperiment2();
+        };
     }
 }

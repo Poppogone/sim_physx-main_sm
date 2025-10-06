@@ -110,4 +110,9 @@ public class csv_RingQuestion: MonoBehaviour
 
         Debug.Log("[INFO] 平均反応時間をCSVに追記しました（csv_RingQuestion）");
     }    
+
+    // --- SAGAT一時停止・復帰用ダミー ---
+    public void PauseLogging() { /* いまは何もしない */ }
+    public void ResumeLogging() { /* いまは何もしない */ }
+
 }

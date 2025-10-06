@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TestDataManager : MonoBehaviour
@@ -30,15 +31,25 @@ public class TestDataManager : MonoBehaviour
     public string posLogPath = "";
     public float posElapsed = 0f;
 
+    // ======== ここから追加：zx120 の状態スナップショット保存用 ========
+    [System.Serializable]
+    public class TransformSnapshot
+    {
+        public Vector3 worldPosition;             // zx120ルート位置
+        public Quaternion worldRotation;          // zx120ルート姿勢
+        public Vector3 rbVelocity;                // 速度
+        public Vector3 rbAngularVelocity;         // 角速度
+        public Dictionary<string, Quaternion> partLocalRotations = new Dictionary<string, Quaternion>();
+    }
+
+    [Header("zx120の状態スナップショット")]
+    public TransformSnapshot zx120Snapshot;       // 最新の保存状態
+    // ===============================================================
+
     void Awake()
     {
-        if (I != null && I != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        I = this;
-        DontDestroyOnLoad(gameObject);
+        if (I == null) { I = this; DontDestroyOnLoad(gameObject); }
+        else Destroy(gameObject);
     }
 
     public void PauseForSAGAT()  { pausedForSAGAT = true; }
@@ -48,11 +59,14 @@ public class TestDataManager : MonoBehaviour
     public void ResetAll()
     {
         pausedForSAGAT = false;
-        for (int i = 0; i < dwellSecondsPerArea.Length; i++) dwellSecondsPerArea[i] = 0f;
+        for (int i = 0; i < dwellSecondsPerArea.Length; i++)
+            dwellSecondsPerArea[i] = 0f;
 
         controllerLogPath = ""; controllerElapsed = 0f;
         opstateLogPath   = ""; opstateElapsed   = 0f;
         ringLogPath      = ""; ringElapsed      = 0f;
         posLogPath       = ""; posElapsed       = 0f;
+
+        zx120Snapshot = null; // ← 保存状態もリセット
     }
 }

@@ -22,9 +22,13 @@ public class JointPosController : MonoBehaviour
         if (joint)
         {
             var drive = joint.xDrive;
+
+            //初期位置を固定しないならコメントアウト↓
             targetPos.data = initTargetPos;
             drive.target = (float)(targetPos.data * Mathf.Rad2Deg);
             joint.xDrive = drive;
+            //↑ここまでコメントアウト
+
             //xDriveを個別に設定しているため省略
         }
         else

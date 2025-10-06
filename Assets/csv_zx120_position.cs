@@ -9,114 +9,98 @@ public class csv_zx120_position : MonoBehaviour
     public bool enabledLogging = true;
 
     [Header("Targets")]
-    [SerializeField] private Transform zx120;        // 追跡対象（車体）
+    [SerializeField] private Transform zx120;  // 追跡対象（車体）
 
     [Header("Filename (UI Text)")]
-    [SerializeField] private Text filenameText;      // 必要なら start_check から参照
+    [SerializeField] private Text filenameText;
 
     private StreamWriter sw;
     private string path;
-    private bool tracing = false;
-    private float t0 = 0f;
-    private bool IsCheck = false;                    // ファイルオープン済みガード
+    private bool isLogging = false;
+    private float startLocal;        // このセッションの開始時間
+    private float elapsedBefore = 0; // 累積時間
 
-    // ====== 外部から呼ぶAPI ======
-
-    /*
-    // UI Text を受け取る互換版
-    public void MakeFile(Text filename)
+    void OnDestroy()
     {
-        if (filename == null || string.IsNullOrWhiteSpace(filename.text))
-        {
-            Debug.LogWarning("[csv_zx120_position] filenameText is null/empty.");
-            return;
-        }
-        MakeFile(filename.text);
+        Close();
     }
-    */
 
-    // string 版（StartLineで一度だけ呼ぶ）
+    void Update()
+    {
+        if (!enabledLogging || !isLogging) return;
+        if (TestDataManager.I != null && TestDataManager.I.pausedForSAGAT) return;
+        if (zx120 == null) return;
+
+        float t = elapsedBefore + (Time.realtimeSinceStartup - startLocal);
+        Vector3 p = zx120.position;
+        sw.WriteLine($"{t:F3},{p.x:F4},{p.y:F4},{p.z:F4}");
+    }
+
+    // ===== ファイル作成（初回のみ） =====
+    public void MakeFile(Text filenameUI)
+    {
+        if (!enabledLogging || filenameUI == null || string.IsNullOrWhiteSpace(filenameUI.text)) return;
+        MakeFile(filenameUI.text.Trim());
+    }
+
     public void MakeFile(string baseName)
     {
-        if (!enabledLogging) return;
-        if (IsCheck) return; // 冪等：二重初期化防止
+        if (!enabledLogging || isLogging) return;
 
-        // 保存先を統一（他ロガーと同様）
         string dir = Path.Combine(Application.dataPath, "ExperimentData_2025");
         Directory.CreateDirectory(dir);
-        path = Path.Combine(dir, baseName + "_zx120_position.csv");
+        path = Path.Combine(dir, $"{baseName}_zx120_position.csv");
 
-        // 共有違反を避けつつ即時書き出し
-        var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read);
-        sw = new StreamWriter(fs, new UTF8Encoding(false)) { AutoFlush = true };
+        bool exists = File.Exists(path);
+        sw = new StreamWriter(path, append: true, new UTF8Encoding(false)) { AutoFlush = true };
+        if (!exists) sw.WriteLine("Time,X,Y,Z");
 
-        // ヘッダ
-        sw.WriteLine("time,x,y,z");
+        startLocal = Time.realtimeSinceStartup;
+        elapsedBefore = 0f;
+        isLogging = true;
 
-        // 記録開始（StartCheckは不要）
-        IsCheck = true;
-        tracing = true;
-        t0 = Time.realtimeSinceStartup;
-
+        TestDataManager.I.posLogPath = path;
+        TestDataManager.I.posElapsed = 0f;
         Debug.Log("[csv_zx120_position] Start logging: " + path);
     }
 
-    // StopLine等で止めたいときに呼ぶ
-    public void StopTrace()
+    // ===== 一時停止 =====
+    public void PauseLogging()
     {
-        tracing = false;
-        CloseIfOpen();
-        IsCheck = false;
-        Debug.Log("[csv_zx120_position] Trace STOP & file closed");
+        if (!isLogging) return;
+
+        elapsedBefore += (Time.realtimeSinceStartup - startLocal);
+        TestDataManager.I.posElapsed = elapsedBefore;
+
+        sw.Flush();
+        sw.Close();
+        sw = null;
+        isLogging = false;
+
+        Debug.Log($"[csv_zx120_position] Pause at {elapsedBefore:F3}s");
     }
 
-    // ====== 内部処理 ======
-
-    private void Update()
+    // ===== 再開 =====
+    public void ResumeLogging()
     {
-        if (!enabledLogging || !tracing || !IsCheck || sw == null || zx120 == null) return;
+        path = TestDataManager.I.posLogPath;
+        elapsedBefore = TestDataManager.I.posElapsed;
+        if (string.IsNullOrEmpty(path)) return;
 
-        float t = Time.realtimeSinceStartup - t0;
-        Vector3 p = zx120.position;
+        sw = new StreamWriter(path, append: true, new UTF8Encoding(false)) { AutoFlush = true };
+        startLocal = Time.realtimeSinceStartup;
+        isLogging = true;
 
-        // 軽量・低GC
-        sw.Write(t.ToString("F4"));
-        sw.Write(",");
-        sw.Write(p.x.ToString("F5"));
-        sw.Write(",");
-        sw.Write(p.y.ToString("F5"));
-        sw.Write(",");
-        sw.WriteLine(p.z.ToString("F5"));
+        Debug.Log($"[csv_zx120_position] Resume logging from {elapsedBefore:F3}s");
     }
 
-    private void OnDestroy()
-    {
-        CloseIfOpen();
-        IsCheck = false;
-    }
-
-    private void CloseIfOpen()
-    {
-        if (sw != null)
-        {
-            try
-            {
-                sw.Flush();
-                sw.Close();
-            }
-            finally
-            {
-                sw.Dispose();
-                sw = null;
-            }
-        }
-    }
-
+    // ===== クローズ =====
     public void Close()
     {
-        tracing = false;
-        CloseIfOpen();
-        IsCheck = false;
-        //Debug.Log("[csv_zx120_position] Close called -> file closed");
+        if (!isLogging) return;
+        sw.Flush();
+        sw.Close();
+        sw = null;
+        isLogging = false;
     }
 }
