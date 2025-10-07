@@ -339,4 +339,10 @@ public class Ring_AnswerRecord : MonoBehaviour
         // 次の出題を許可
         question_sw = true;
     }
+    public void FinishAndWriteAverage()
+    {
+        var csv = csv_writer.GetComponent<csv_RingQuestion>();
+        if (csv != null) csv.WriteAverageAnsTime(AnsTime);
+    }
+
 }

@@ -1,4 +1,3 @@
-// DraggablePaletteItem.cs
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,8 +9,11 @@ public class DraggablePaletteItem : MonoBehaviour, IBeginDragHandler, IDragHandl
     public Sprite obstacleSprite;            // 置く見た目（未設定なら自分のImageを使用）
     public Vector2 placedSize = new Vector2(64, 64);
 
-    RectTransform draggingObj;
-    Canvas rootCanvas;
+    [Header("正解と対応させる名前（固定名）")]
+    public string logicalName = "Correct_Corn";  // ← Inspectorで設定（例：Correct_Corn, Correct_Box）
+
+    private RectTransform draggingObj;
+    private Canvas rootCanvas;
 
     void Awake()
     {
@@ -25,8 +27,8 @@ public class DraggablePaletteItem : MonoBehaviour, IBeginDragHandler, IDragHandl
 
     public void OnBeginDrag(PointerEventData e)
     {
-        // 置くUIを新規作成（Image + PlacedObstacle）
-        var go = new GameObject("Obstacle_Corn", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(PlacedObstacle));
+        // オブジェクトを新規作成（番号なし）
+        var go = new GameObject(logicalName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(PlacedObstacle));
         go.transform.SetParent(workspace, false);
 
         var img = go.GetComponent<Image>();
@@ -36,6 +38,7 @@ public class DraggablePaletteItem : MonoBehaviour, IBeginDragHandler, IDragHandl
         draggingObj = go.GetComponent<RectTransform>();
         draggingObj.sizeDelta = placedSize;
 
+        // ドラッグ開始位置を反映
         RectTransformUtility.ScreenPointToLocalPointInRectangle(workspace, e.position, e.pressEventCamera, out var local);
         draggingObj.anchoredPosition = local;
     }
@@ -51,7 +54,7 @@ public class DraggablePaletteItem : MonoBehaviour, IBeginDragHandler, IDragHandl
     {
         if (!draggingObj) return;
 
-        // ワークスペース外で終了したらキャンセル（削除）
+        // ワークスペース外にドロップされたら削除
         if (!RectTransformUtility.RectangleContainsScreenPoint(workspace, e.position, e.pressEventCamera))
             Destroy(draggingObj.gameObject);
 

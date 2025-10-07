@@ -59,12 +59,12 @@ public class csv_RingQuestion: MonoBehaviour
         }
     }*/
 
-    public void Close()
-    {
-        if (IsCheck)
-        {
-            sw.Close();
-        } 
+    public void Close() {
+        if (!IsCheck) return;
+        sw?.Flush();
+        sw?.Close();
+        sw = null;
+        IsCheck = false;
     }
 
     public void MakeFile(Text filename)

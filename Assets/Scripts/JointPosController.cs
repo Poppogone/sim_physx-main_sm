@@ -33,7 +33,7 @@ public class JointPosController : MonoBehaviour
         }
         else
         {
-            Debug.Log("No ArticulationBody are found");
+            //Debug.Log("No ArticulationBody are found");
         }
         ros.Subscribe<Float64Msg>(setpointTopicName, ExecuteJointPosControl);
     }
@@ -50,6 +50,6 @@ public class JointPosController : MonoBehaviour
     void ExecuteJointPosControl(Float64Msg msg)
     {
         targetPos = msg;
-        Debug.Log("Joint Target Position:" + targetPos.data);
+        //Debug.Log("Joint Target Position:" + targetPos.data);
     }
 }

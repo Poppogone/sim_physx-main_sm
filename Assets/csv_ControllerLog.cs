@@ -122,7 +122,7 @@ public class csv_ControllerLog : MonoBehaviour
         PlayerPrefs.SetString(PP_KEY_ELAPSED, "0");
         PlayerPrefs.Save();
 
-        Debug.Log("[csv_ControllerLog] Start logging (new): " + path);
+        //Debug.Log("[csv_ControllerLog] Start logging (new): " + path);
     }
 
     public void PauseLogging()
@@ -142,7 +142,7 @@ public class csv_ControllerLog : MonoBehaviour
         PlayerPrefs.SetString(PP_KEY_ELAPSED, elapsed.ToString("F6", CultureInfo.InvariantCulture));
         PlayerPrefs.Save();
 
-        Debug.Log($"[csv_ControllerLog] Paused. Saved path & elapsed. (elapsed={elapsed:F3}s, totalIdle={totalIdleTime:F3}s)");
+        //Debug.Log($"[csv_ControllerLog] Paused. Saved path & elapsed. (elapsed={elapsed:F3}s, totalIdle={totalIdleTime:F3}s)");
     }
 
     public void ResumeLogging()
