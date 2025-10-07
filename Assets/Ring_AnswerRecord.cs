@@ -14,7 +14,6 @@ public class Ring_AnswerRecord : MonoBehaviour
     bool in_question = false;
     bool is_csv_written = false;
 
-
     [SerializeField, PersistentAmongPlayMode] private List<int> question_0_list_1 = new List<int>();
     [SerializeField, PersistentAmongPlayMode] private List<int> question_0_list_2 = new List<int>();
     [SerializeField, PersistentAmongPlayMode] private List<string> charactrer_0_list = new List<string>();
@@ -88,6 +87,9 @@ public class Ring_AnswerRecord : MonoBehaviour
 
     void Update()
     {
+        // ★最小追加：SAGAT中は完全停止（ToSAGATScene→TestDataManagerが制御）
+        if (TestDataManager.I != null && TestDataManager.I.pausedForSAGAT) return;
+
         if (start_sw && question_sw && !in_question)
         {
             question_sw = false;
@@ -106,7 +108,6 @@ public class Ring_AnswerRecord : MonoBehaviour
             ope_state = 1;
         else
             return;
-
 
         // 全ての出題が終了したら平均時間を書き出し
         if (!is_csv_written &&
@@ -185,8 +186,6 @@ public class Ring_AnswerRecord : MonoBehaviour
             Invoke("Disappearance", 2);
             return;
         }
-
-
     }
 
     // 表示用共通関数
@@ -236,7 +235,6 @@ public class Ring_AnswerRecord : MonoBehaviour
         N_image.SetActive(false);
         //question_sw = true;
         //in_question = false;
-
     }
 
     public void LeftAnswer()
@@ -313,14 +311,32 @@ public class Ring_AnswerRecord : MonoBehaviour
         Invoke("PrepareNextQuestion", wait_sec);
     }
 
-    
     void PrepareNextQuestion()
     {
         question_sw = true;
     }
-    
+
     public void StartCheck()
     {
         start_sw = true;
+    }
+
+    // ===== 最小追加：SAGAT一時停止/再開のためのAPI =====
+    public void PauseQuestions()
+    {
+        // 進行中の出題を即キャンセルして非表示
+        CancelInvoke("Disappearance");
+        if (H_image) H_image.SetActive(false);
+        if (N_image) N_image.SetActive(false);
+        in_question = false;
+
+        // 再開指示が来るまで次の出題を止める
+        question_sw = false;
+    }
+
+    public void ResumeQuestions()
+    {
+        // 次の出題を許可
+        question_sw = true;
     }
 }

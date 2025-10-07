@@ -1,0 +1,9 @@
+Name,X,Y
+Obstacle_Corn,369.7535,103.6193
+
+Result,Name,Distance
+FalseNegative,Correct_Corn1,N/A
+FalsePositive,Obstacle_Corn,N/A
+AverageDistance,,N/A
+FalseNegativeCount,,1
+FalsePositiveCount,,1

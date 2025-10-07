@@ -19,6 +19,9 @@ public class SAGATExit : MonoBehaviour
         {
             Debug.Log("[SAGATExit] SAGATScene unloaded.");
             ToSAGATScene.ReactivateExperiment2();
+
+            // ④ 再開処理とブラックアウト解除
+            ToSAGATScene.OnSAGATClosed();
         };
     }
 }

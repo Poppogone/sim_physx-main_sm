@@ -55,7 +55,7 @@ public class csv_ControllerLog : MonoBehaviour
         float arm      = zx120Controller.armDirection;
         float bucket   = zx120Controller.bucketDirection;
 
-        // ★ 「6つすべてが0（≒しきい値以内）」ならアイドル（ロジックはそのまま）
+        // ★ 「6つすべてが0（≒しきい値以内）」ならアイドル
         bool allZero =
             Mathf.Abs(crawlerL) <= epsilonZero &&
             Mathf.Abs(crawlerR) <= epsilonZero &&
@@ -74,7 +74,7 @@ public class csv_ControllerLog : MonoBehaviour
             idleAccum = 0f; // 連続リセット（合計はリセットしない）
         }
 
-        // 1行出力（H 列が IdleTime）／列順・内容はそのまま
+        // 1行出力（H 列が IdleTime）
         string[] row = {
             timeNow.ToString(CultureInfo.InvariantCulture),
             crawlerL.ToString(CultureInfo.InvariantCulture),
@@ -83,49 +83,41 @@ public class csv_ControllerLog : MonoBehaviour
             arm.ToString(CultureInfo.InvariantCulture),
             boom.ToString(CultureInfo.InvariantCulture),
             bucket.ToString(CultureInfo.InvariantCulture),
-            idleAccum.ToString("F3", CultureInfo.InvariantCulture)   // ← H列
+            idleAccum.ToString("F3", CultureInfo.InvariantCulture)
         };
         sw.WriteLine(string.Join(",", row));
 
         nextSampleTime += sampleInterval;
     }
 
-    // ===== ここから：新規作成 / 一時停止 / 再開 の追加 =====
+    // ===== ここから：新規作成 / 一時停止 / 再開 =====
 
-    /// <summary>
-    /// 新規にCSVを作成して記録を開始（従来どおり）
-    /// ※ 再開したい場合は ResumeLogging() を呼んでください
-    /// </summary>
     public void MakeFile(string baseName)
     {
         if (!enabledLogging) return;
         if (IsCheck) return;  // 冪等ガード
 
-        // 保存先ディレクトリ（従来どおり）
         string dir = Path.Combine(Application.dataPath, "ExperimentData_2025");
         Directory.CreateDirectory(dir);
 
         path = Path.Combine(dir, baseName + "_ControllerLog.csv");
 
-        // FileShare.Read で開く + AutoFlush = true（従来どおり）
         var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read);
         sw = new StreamWriter(fs, new UTF8Encoding(false)) { AutoFlush = true };
 
-        // ヘッダ行（従来どおり）
+        // ヘッダ行（K列はラベル。値は終了時に上書き）
         string[] header = {
             "Time","CrawlerL","CrawlerR","Turn","Arm","Boom","Bucket",
-            "IdleTime","","","TotalIdleTime" // K列に合計を書き戻す仕様
+            "IdleTime","","","TotalIdleTime"
         };
         sw.WriteLine(string.Join(",", header));
 
-        // 初期化（従来どおり）
         IsCheck = true;
         timeStart = Time.realtimeSinceStartup;
         nextSampleTime = Time.unscaledTime;
         idleAccum = 0f;
         totalIdleTime = 0f;
 
-        // 新規開始なので、再開用の情報を保存
         PlayerPrefs.SetString(PP_KEY_PATH, path);
         PlayerPrefs.SetString(PP_KEY_ELAPSED, "0");
         PlayerPrefs.Save();
@@ -133,39 +125,30 @@ public class csv_ControllerLog : MonoBehaviour
         Debug.Log("[csv_ControllerLog] Start logging (new): " + path);
     }
 
-    /// <summary>
-    /// 記録を一時停止（SAGATへ遷移など）。ヘッダK列へ合計アイドルを書き戻し、パスと経過秒を保存。
-    /// </summary>
     public void PauseLogging()
     {
         if (!IsCheck || sw == null) return;
 
-        // ここまでの経過秒（Time列の継続用）
         float elapsed = Time.realtimeSinceStartup - timeStart;
 
-        // K列へ totalIdleTime を書き戻す
+        // 先に閉じる（Windowsの共有ロック回避）
+        try { sw.Flush(); sw.Close(); } catch {} finally { sw = null; IsCheck = false; }
+
+        // ヘッダK列へ書き戻し
         WriteTotalIdleToHeader(path, totalIdleTime);
 
-        // パスと経過秒を保存（PlayerPrefs）
+        // 続き再開のため保存
         PlayerPrefs.SetString(PP_KEY_PATH, path);
         PlayerPrefs.SetString(PP_KEY_ELAPSED, elapsed.ToString("F6", CultureInfo.InvariantCulture));
         PlayerPrefs.Save();
 
-        // クローズ
-        sw.Close();
-        sw = null;
-        IsCheck = false;
-
         Debug.Log($"[csv_ControllerLog] Paused. Saved path & elapsed. (elapsed={elapsed:F3}s, totalIdle={totalIdleTime:F3}s)");
     }
 
-    /// <summary>
-    /// 直前の続きから記録を再開（同じCSVに追記）。Time列を連続させる。
-    /// </summary>
     public void ResumeLogging()
     {
         if (!enabledLogging) return;
-        if (IsCheck) return; // すでに開いているなら何もしない
+        if (IsCheck) return;
 
         string savedPath = PlayerPrefs.GetString(PP_KEY_PATH, "");
         string savedElapsedStr = PlayerPrefs.GetString(PP_KEY_ELAPSED, "");
@@ -177,24 +160,17 @@ public class csv_ControllerLog : MonoBehaviour
 
         path = savedPath;
 
-        // 直前までの経過秒を取得（Time列連続のため）
         float elapsedBefore = 0f;
         float.TryParse(savedElapsedStr, NumberStyles.Float, CultureInfo.InvariantCulture, out elapsedBefore);
 
-        // ヘッダK列（TotalIdleTime）を読み取り、累積合計を復元
+        // ヘッダK列（TotalIdleTime）を読み取り、累積合計を復元（数値のみ/ラベル付きの両対応）
         totalIdleTime = ReadTotalIdleFromHeader(path);
 
-        // 追記で開く（読み取り共有・AutoFlush）
         var fs = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.Read);
         sw = new StreamWriter(fs, new UTF8Encoding(false)) { AutoFlush = true };
 
-        // timeStart を「今−直前累積」にして、timeNow=(now-timeStart)が連続するようにする
         timeStart = Time.realtimeSinceStartup - elapsedBefore;
-
-        // サンプリングタイマは今から（バックログ実行を避ける）
         nextSampleTime = Time.unscaledTime;
-
-        // 再開時は連続アイドルカウンタは 0 から
         idleAccum = 0f;
 
         IsCheck = true;
@@ -202,26 +178,31 @@ public class csv_ControllerLog : MonoBehaviour
         Debug.Log($"[csv_ControllerLog] Resumed append: {path} (elapsedBefore={elapsedBefore:F3}s, totalIdle={totalIdleTime:F3}s)");
     }
 
-    /// <summary>
-    /// 完了クローズ（従来の Close）。K列へ合計アイドルを書き戻して閉じる。
-    /// </summary>
     public void Close()
     {
-        if (IsCheck && sw != null)
+        // 先にストリームを閉じる（競合対策）
+        if (sw != null)
         {
-            // K列に合計アイドルを書き戻す
+            try { sw.Flush(); sw.Close(); } catch {} finally { sw = null; }
+        }
+        bool wasLogging = IsCheck;
+        IsCheck = false;
+
+        // ヘッダK列に書き戻し（視認性のため "TotalIdleTime=xxx" 形式）
+        if (!string.IsNullOrEmpty(path))
+        {
             WriteTotalIdleToHeader(path, totalIdleTime);
-
-            sw.Close();
-            sw = null;
-            IsCheck = false;
-
             Debug.Log("[csv_ControllerLog] Closed. TotalIdleTime(K) = " + totalIdleTime.ToString("F3", CultureInfo.InvariantCulture));
+        }
+        else if (wasLogging)
+        {
+            Debug.LogWarning("[csv_ControllerLog] Closed but path was empty.");
         }
     }
 
     // ===== ヘルパ =====
 
+    // ヘッダ1行目のK列に "TotalIdleTime=xxx" として書き戻す（Excelで見やすく、読み戻しも容易）
     private void WriteTotalIdleToHeader(string filePath, float totalIdle)
     {
         try
@@ -231,7 +212,9 @@ public class csv_ControllerLog : MonoBehaviour
             {
                 var cols = lines[0].Split(',');
                 if (cols.Length < 11) Array.Resize(ref cols, 11); // K列まで拡張
-                cols[10] = totalIdle.ToString("F3", CultureInfo.InvariantCulture); // K列へ
+
+                cols[10] = $"TotalIdleTime={totalIdle.ToString("F3", CultureInfo.InvariantCulture)}"; // K列
+
                 lines[0] = string.Join(",", cols);
                 File.WriteAllLines(filePath, lines, Encoding.UTF8);
             }
@@ -242,6 +225,7 @@ public class csv_ControllerLog : MonoBehaviour
         }
     }
 
+    // ヘッダK列から合計アイドルを読む（"3.940" でも "TotalIdleTime=3.940" でもOK）
     private float ReadTotalIdleFromHeader(string filePath)
     {
         try
@@ -254,9 +238,16 @@ public class csv_ControllerLog : MonoBehaviour
                 var cols = header.Split(',');
                 if (cols.Length >= 11)
                 {
-                    float k;
-                    if (float.TryParse(cols[10], NumberStyles.Float, CultureInfo.InvariantCulture, out k))
-                        return k;
+                    string k = cols[10];
+                    if (string.IsNullOrWhiteSpace(k)) return 0f;
+
+                    // "TotalIdleTime=3.940" → 右辺だけ抜き出し
+                    int eq = k.IndexOf('=');
+                    if (eq >= 0 && eq < k.Length - 1) k = k.Substring(eq + 1);
+
+                    float val;
+                    if (float.TryParse(k, NumberStyles.Float, CultureInfo.InvariantCulture, out val))
+                        return val;
                 }
             }
         }
@@ -266,4 +257,7 @@ public class csv_ControllerLog : MonoBehaviour
         }
         return 0f;
     }
+
+    void OnApplicationQuit() { Close(); }
+    void OnDestroy()         { Close(); }
 }

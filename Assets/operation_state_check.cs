@@ -62,4 +62,16 @@ public class operation_state_check : MonoBehaviour
         Vector3 size = new Vector3(Mathf.Abs(topRight.x - bottomLeft.x), 0.2f, Mathf.Abs(topRight.y - bottomLeft.y));
         Gizmos.DrawWireCube(center, size);
     }
+
+    public void RecordSAGATEvent(string eventType)
+        {
+            if (csv_writer == null) csv_writer = GameObject.Find("CSV writer");
+            if (csv_writer == null) return;
+
+            var csv = csv_writer.GetComponent<csv_operation_state>();
+            if (csv == null) return;
+
+            csv.WriteCustomEvent(eventType);
+            Debug.Log($"[operation_state_check] Recorded {eventType} at time={Time.realtimeSinceStartup:F2}");
+        }
 }
