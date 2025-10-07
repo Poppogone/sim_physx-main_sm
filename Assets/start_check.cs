@@ -57,6 +57,12 @@ public class start_check : MonoBehaviour
                 op.MakeFile(filenameText.text);
             }
 
+            var eye = csv_writer.GetComponent<csv_input_eye>();
+            if (eye != null && filenameText != null)
+            {
+                eye.MakeFile(filenameText.text);
+            }
+
             sw = false; // 二重実行防止
         }
 

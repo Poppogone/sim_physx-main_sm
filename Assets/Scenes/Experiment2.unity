@@ -4965,7 +4965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &78451834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41122,7 +41122,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 3
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
@@ -50167,7 +50167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &905578035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84439,8 +84439,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1865782462}
         m_TargetAssemblyTypeName: csv_target_pos, Assembly-CSharp
-        m_MethodName: MakeFile
-        m_Mode: 2
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 601600371}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
@@ -84451,8 +84451,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1865782461}
         m_TargetAssemblyTypeName: csv_ball, Assembly-CSharp
-        m_MethodName: MakeFile
-        m_Mode: 2
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 601600371}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
@@ -84463,8 +84463,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1865782460}
         m_TargetAssemblyTypeName: csv_collision, Assembly-CSharp
-        m_MethodName: MakeFile
-        m_Mode: 2
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 601600371}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
@@ -84475,8 +84475,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1865782458}
         m_TargetAssemblyTypeName: csv_target_pos_2, Assembly-CSharp
-        m_MethodName: MakeFile
-        m_Mode: 2
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 601600371}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
@@ -84487,8 +84487,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1865782466}
         m_TargetAssemblyTypeName: csv_camera, Assembly-CSharp
-        m_MethodName: MakeFile
-        m_Mode: 2
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 601600371}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
@@ -84499,8 +84499,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1865782467}
         m_TargetAssemblyTypeName: csv_character_pop, Assembly-CSharp
-        m_MethodName: MakeFile
-        m_Mode: 2
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 601600371}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
@@ -84511,6 +84511,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1865782470}
         m_TargetAssemblyTypeName: csv_RingQuestion, Assembly-CSharp
+        m_MethodName: MakeFile
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 601600371}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1865782465}
+        m_TargetAssemblyTypeName: csv_input_eye, Assembly-CSharp
         m_MethodName: MakeFile
         m_Mode: 2
         m_Arguments:
@@ -89856,7 +89868,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 3
+  m_TargetDisplay: 0
 --- !u!224 &1601020230
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94439,6 +94451,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: csv_operation_state, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1865782465}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: StopCoroutine
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -106300,6 +106324,7 @@ GameObject:
   - component: {fileID: 1865782470}
   - component: {fileID: 1865782471}
   - component: {fileID: 1865782472}
+  - component: {fileID: 1865782473}
   m_Layer: 0
   m_Name: CSV writer
   m_TagString: Untagged
@@ -106416,12 +106441,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865782457}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f1c033a94aa8a646a034cf28bc43634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabledLogging: 0
+  enabledLogging: 1
   base_link: {fileID: 4719085804421732177}
   swing_joint: {fileID: 4719085803562181316}
   boom_joint: {fileID: 4719085804080976639}
@@ -106525,6 +106550,18 @@ MonoBehaviour:
   enabledLogging: 1
   zx120: {fileID: 4719085804356376901}
   filenameText: {fileID: 601600371}
+--- !u!114 &1865782473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865782457}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9dfc18d0d447be4a9105db5889f27bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1868071451
 GameObject:
   m_ObjectHideFlags: 0

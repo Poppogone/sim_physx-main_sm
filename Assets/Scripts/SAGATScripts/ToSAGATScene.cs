@@ -153,7 +153,8 @@ public class ToSAGATScene : MonoBehaviour
             writer.GetComponent<csv_ControllerLog>()?.PauseLogging();
             writer.GetComponent<csv_operation_state>()?.PauseLogging();
             writer.GetComponent<csv_zx120_position>()?.PauseLogging();
-            writer.GetComponent<csv_RingQuestion>()?.PauseLogging(); // ★今はダミーでもOK
+            writer.GetComponent<csv_RingQuestion>()?.PauseLogging();
+            writer.GetComponent<csv_input_eye>()?.PauseLogging();
         }
 
 
@@ -170,7 +171,9 @@ public class ToSAGATScene : MonoBehaviour
             writer.GetComponent<csv_ControllerLog>()?.ResumeLogging();
             writer.GetComponent<csv_operation_state>()?.ResumeLogging();
             writer.GetComponent<csv_zx120_position>()?.ResumeLogging();
-            writer.GetComponent<csv_RingQuestion>()?.ResumeLogging(); // ★今はダミーでもOK
+            writer.GetComponent<csv_RingQuestion>()?.ResumeLogging();
+            writer.GetComponent<csv_input_eye>()?.ResumeLogging();
+            
         }
 
         // RingQuestionを再開
