@@ -5466,66 +5466,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51c49bce76b88942914e95ee4a9819a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  question_0_list_1: 
-  question_0_list_2: 
+  question_0_list_1: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  question_0_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_0_list:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  question_1_list_1: 03000000070000000c0000000e0000000f000000100000001700000019000000
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  question_1_list_1: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   question_1_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_1_list:
-  - N
-  - H
-  - HN
-  - N
-  - H
-  - N
-  - HN
-  - N
-  - N
-  - H
-  - H
-  - HN
-  - N
   - HN
   - HN
   - HN
-  - H
-  - N
-  - H
-  - N
-  - N
-  - H
   - HN
-  - N
   - HN
-  - H
-  - N
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
   N_image: {fileID: 142775348}
   H_image: {fileID: 1149963423}
   op_state: {fileID: 50334071}
@@ -92902,8 +92902,8 @@ MonoBehaviour:
   armTopic: zx120/arm/cmd
   bucketTopic: zx120/bucket/cmd
   tracksTopic: zx120/tracks/cmd_vel
-  isKeyboardControl: 1
-  isControllerControl: 0
+  isKeyboardControl: 0
+  isControllerControl: 1
   isProControllerControl: 0
   switchSound: {fileID: 0}
   DriverCamera: {fileID: 592123849}
