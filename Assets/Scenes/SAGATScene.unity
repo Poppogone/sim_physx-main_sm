@@ -1023,22 +1023,14 @@ MonoBehaviour:
   workspace: {fileID: 283066363}
   sagatCamera: {fileID: 1384339319}
   correctObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1800085327}
-  - {fileID: 597617149}
-  - {fileID: 816589888}
-  - {fileID: 1526255154}
-  - {fileID: 767969382}
-  - {fileID: 1388790809}
+  - {fileID: 459301174}
+  - {fileID: 1301726089}
+  - {fileID: 1397014914}
+  - {fileID: 2090789845}
+  - {fileID: 1567803922}
+  - {fileID: 1779286744}
+  - {fileID: 932992875}
+  - {fileID: 1379861046}
 --- !u!4 &495088392
 Transform:
   m_ObjectHideFlags: 0
@@ -1825,7 +1817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1048934062
 Transform:
   m_ObjectHideFlags: 0
