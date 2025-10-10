@@ -1,7 +1,6 @@
 {
   "dependencies": {
-    "com.tobii.gaming.sdk": "file:C:/Users/ninch/Downloads/TobiiUnitySDK_5.0.0.3"
-
+    "com.tobii.gaming.sdk": "file:C:/Users/sakin/Downloads/TobiiUnitySDK_5.0.0.3/TobiiUnitySDK_5.0.0.3"
 ,
     "com.unity.collab-proxy": "1.7.1",
     "com.unity.formats.fbx": "4.2.0",
