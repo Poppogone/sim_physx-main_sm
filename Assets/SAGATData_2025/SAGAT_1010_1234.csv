@@ -1,0 +1,17 @@
+Name,X,Y
+Correct_Corn,570.7283,-379.7688
+Correct_Corn,579.0519,-197.6879
+Correct_Corn,291.8844,-378.7283
+
+Result,Name,Distance
+Match,Correct_Corn,83.03
+Match,Correct_Corn,126.64
+Match,Correct_Corn,50.25
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+AverageDistance,,86.64
+FalseNegativeCount,,5
+FalsePositiveCount,,0
