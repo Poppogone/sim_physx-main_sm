@@ -93090,8 +93090,8 @@ MonoBehaviour:
   armTopic: zx120/arm/cmd
   bucketTopic: zx120/bucket/cmd
   tracksTopic: zx120/tracks/cmd_vel
-  isKeyboardControl: 0
-  isControllerControl: 1
+  isKeyboardControl: 1
+  isControllerControl: 0
   isProControllerControl: 0
   switchSound: {fileID: 0}
   DriverCamera: {fileID: 592123849}
@@ -128779,7 +128779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setpointTopicName: zx120/arm/cmd
-  initTargetPos: 2
+  initTargetPos: 1.57
 --- !u!4 &4719085804185901224
 Transform:
   m_ObjectHideFlags: 0
