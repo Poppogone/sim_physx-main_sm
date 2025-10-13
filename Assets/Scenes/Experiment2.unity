@@ -128418,8 +128418,8 @@ ArticulationBody:
   m_XDrive:
     lowerLimit: -70
     upperLimit: 44
-    stiffness: 1500000
-    damping: 150000
+    stiffness: 2500000
+    damping: 250000
     forceLimit: 100000
     target: 0
     targetVelocity: 0
