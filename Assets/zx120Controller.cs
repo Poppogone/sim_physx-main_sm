@@ -49,7 +49,7 @@ public class zx120Controller : MonoBehaviour
 
     public GameObject DriverCamera;
 
-    Float64Msg boomMsg = new Float64Msg() { data = -0.70f };
+    Float64Msg boomMsg = new Float64Msg() { data = -0.80f };
     Float64Msg swingMsg = new Float64Msg() { data = 0.0f };
     Float64Msg armMsg = new Float64Msg() { data = 1.57f };
     Float64Msg bucketMsg = new Float64Msg() { data = 0.79f };
