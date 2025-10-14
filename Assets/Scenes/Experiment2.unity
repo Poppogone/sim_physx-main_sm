@@ -93090,8 +93090,8 @@ MonoBehaviour:
   armTopic: zx120/arm/cmd
   bucketTopic: zx120/bucket/cmd
   tracksTopic: zx120/tracks/cmd_vel
-  isKeyboardControl: 1
-  isControllerControl: 0
+  isKeyboardControl: 0
+  isControllerControl: 1
   isProControllerControl: 0
   switchSound: {fileID: 0}
   DriverCamera: {fileID: 592123849}
