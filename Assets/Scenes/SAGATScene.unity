@@ -3465,7 +3465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workspace: {fileID: 283066363}
   sagatCorrectCsv: {fileID: 4900000, guid: e8f6b96c660102d47af7a6060c11c81f, type: 3}
-  attachedCsv: {fileID: 4900000, guid: d5dfef30564f17f438f82f590bf56c84, type: 3}
+  attachedCsv: {fileID: 4900000, guid: aa13f5b3a4c246b479e75f78058ba5a9, type: 3}
   dotSprite: {fileID: 0}
   dotSize: 25
   colorWhite: {r: 0.047169805, g: 0.047169805, b: 0.047169805, a: 1}
@@ -3475,7 +3475,7 @@ MonoBehaviour:
   cropHeight: 550
   debugSaveFullScreen: 0
   outputFolderName: SAGATData_2025
-  fileBaseName: h_SAGAT_simu
+  fileBaseName: d_SAGAT_scale
   addTimestamp: 0
   exportButton: {fileID: 0}
   pressedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
