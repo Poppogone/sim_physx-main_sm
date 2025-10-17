@@ -1,0 +1,15 @@
+﻿Time,Area,LorR,Question,Character,State,Answer_Time
+112.3336,1,right,16,N,correct,1.4025
+116.3354,1,right,7,N,correct,0.8948
+119.3895,1,right,12,N,correct,0.9847
+123.3106,1,right,10,N,correct,0.7665
+127.797,1,left,27,H,correct,1.1970
+134.3598,1,right,25,H,ignored,4.0000
+138.4845,1,right,18,N,correct,1.1129
+142.4113,1,right,3,N,correct,1.1346
+147.3427,1,right,9,N,correct,0.6773
+153.1416,1,right,6,N,correct,1.2508
+156.9536,1,right,15,N,correct,1.4978
+161.3521,1,right,24,N,correct,0.8155
+166.4137,1,right,5,N,correct,0.8912
+171.5149,1,right,22,N,ignored,4.0000
