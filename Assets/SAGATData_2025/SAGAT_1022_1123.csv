@@ -1,0 +1,14 @@
+Name,X,Y
+
+Result,Name,Distance
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+FalseNegative,Correct_Corn,N/A
+AverageDistance,,N/A
+FalseNegativeCount,,8
+FalsePositiveCount,,0
