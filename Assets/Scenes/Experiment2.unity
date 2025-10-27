@@ -5404,7 +5404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51c49bce76b88942914e95ee4a9819a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  question_0_list_1: 010000000200000003000000040000000500000007000000080000000c0000000e0000001000000012000000140000001600000018000000190000001a0000001b000000
+  question_0_list_1: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001b000000
   question_0_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_0_list:
   - HN
@@ -5412,31 +5412,32 @@ MonoBehaviour:
   - HN
   - HN
   - HN
-  - H
   - HN
   - HN
-  - H
-  - H
-  - H
   - HN
-  - H
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
   - HN
   - N
   - HN
-  - H
-  - HN
-  - H
-  - HN
-  - H
-  - HN
-  - H
-  - HN
-  - HN
-  - HN
-  - HN
-  question_1_list_1: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  question_1_list_1: 02000000030000000400000005000000060000000700000008000000090000000a0000000b0000000d0000000e0000000f000000100000001100000012000000130000001500000016000000170000001800000019000000
   question_1_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_1_list:
+  - N
   - HN
   - HN
   - HN
@@ -5447,6 +5448,7 @@ MonoBehaviour:
   - HN
   - HN
   - HN
+  - N
   - HN
   - HN
   - HN
@@ -5454,16 +5456,14 @@ MonoBehaviour:
   - HN
   - HN
   - HN
+  - H
   - HN
   - HN
   - HN
   - HN
   - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
+  - N
+  - N
   N_image: {fileID: 142775348}
   H_image: {fileID: 1149963423}
   op_state: {fileID: 50334071}
@@ -23799,7 +23799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &441214538
 Transform:
   m_ObjectHideFlags: 0
@@ -23807,13 +23807,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441214537}
-  m_LocalRotation: {x: 0.40168488, y: -0.24037524, z: 0.08452888, w: 0.87961584}
-  m_LocalPosition: {x: 30.67, y: 6.35, z: -1.93}
+  m_LocalRotation: {x: 0.22493315, y: -0.27890483, z: 0.003873934, w: 0.9335964}
+  m_LocalPosition: {x: 31.94, y: 3.7, z: -4.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 48.356, y: -32.289, z: -3.832}
+  m_LocalEulerAnglesHint: {x: 24.971, y: -34.928, z: -7.494}
 --- !u!114 &441214539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72827,7 +72827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331629573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: 0, z: 7}
+  m_LocalPosition: {x: 26.49, y: 0, z: 6.72}
   m_LocalScale: {x: 4, y: 0.0001, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79885,7 +79885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1452492196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113695,7 +113695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2026008611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125275,7 +125275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setpointTopicName: zx120/arm/cmd
-  initTargetPos: 2
+  initTargetPos: 1.57
 --- !u!4 &4719085804185901224
 Transform:
   m_ObjectHideFlags: 0
@@ -125638,7 +125638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4719085804356376904}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 18, y: 0, z: 10}
+  m_LocalPosition: {x: 26.28, y: 0, z: 9.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4719085803456055500}

@@ -97,6 +97,47 @@ public class Ring_AnswerRecord : MonoBehaviour
 
     void Question()
     {
+        ope_state = 1; // ← 固定
+
+        if (question_1_list_1.Count == 0 && question_1_list_2.Count > 0)
+        {
+            selected_question = question_1_list_2[UnityEngine.Random.Range(0, question_1_list_2.Count)];
+            question_1_list_2.Remove(selected_question);
+        }
+        else
+        {
+            selected_question = question_1_list_1[UnityEngine.Random.Range(0, question_1_list_1.Count)];
+            question_1_list_1.Remove(selected_question);
+        }
+
+        selected_pos = text_pos_list[selected_question - 1];
+        selected_c_num = UnityEngine.Random.Range(0, charactrer_1_list[selected_question - 1].Length);
+
+        if (charactrer_1_list[selected_question - 1].Substring(selected_c_num, 1) == "N")
+        {
+            N_image.GetComponent<RectTransform>().anchoredPosition = selected_pos;
+            N_image.SetActive(true);
+            c_now = "N";
+        }
+        else
+        {
+            H_image.GetComponent<RectTransform>().anchoredPosition = selected_pos;
+            H_image.SetActive(true);
+            c_now = "H";
+        }
+
+        in_question = true;
+        timeQuestion = Time.realtimeSinceStartup;
+        Invoke("Disappearance", 2);
+        charactrer_1_list[selected_question - 1] =
+            charactrer_1_list[selected_question - 1].Remove(selected_c_num, 1);
+    }
+
+
+
+    /*
+    void Question()
+    {
         var script = op_state.GetComponent<operation_state_check>();
         area_now = script.area_now;
 
@@ -188,6 +229,7 @@ public class Ring_AnswerRecord : MonoBehaviour
 
 
     }
+    */
 
     // 表示用共通関数
     void ShowImage(string character, Vector2 pos)
