@@ -41,7 +41,7 @@ public class HolePainter : MonoBehaviour
                     int z = centerZ + j;
                     if (x >= 0 && x < holesResolution && z >= 0 && z < holesResolution)
                     {
-                        holes[z, x] = true;
+                        holes[z, x] = true; //trueで穴をふさぐ
                     }
                 }
             }
