@@ -1,0 +1,9 @@
+﻿Time,Area,LorR,Question,Character,State,Answer_Time
+88.90108,1,right,12,N,ignored,4.0000
+92.03277,1,left,15,H,correct,0.7171
+95.732,1,right,6,N,correct,0.7535
+100.578,1,right,27,N,correct,0.6638
+103.5816,1,right,17,N,correct,0.6638
+108.7493,1,right,20,N,correct,0.6974
+111.9769,1,right,10,N,correct,0.7003
+116.7883,9999,left,9999,xx,irrelevant_answer,9999
