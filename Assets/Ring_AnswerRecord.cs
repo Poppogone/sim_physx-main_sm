@@ -356,7 +356,7 @@ public class Ring_AnswerRecord : MonoBehaviour
         H_image.SetActive(false);
         N_image.SetActive(false);
         in_question = false;
-        float wait_sec = UnityEngine.Random.Range(0.5f, 1.0f);
+        float wait_sec = UnityEngine.Random.Range(2.0f, 5.0f);
         Invoke("PrepareNextQuestion", wait_sec);
     }
 
