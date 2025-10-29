@@ -12,7 +12,7 @@ public class BallGenerator : MonoBehaviour
 
     [Header("生成中心(2点) ※Yは無視してXZのみ使用")]
     public Vector3 center1 = new Vector3(22f, 0f, 1.5f);
-    //public Vector3 center2 = new Vector3(25f, 0f, 3.5f);
+    public Vector3 center2 = new Vector3(25f, 0f, 3.5f);
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class BallGenerator : MonoBehaviour
         int n2 = n - n1;    // 2箇所目に落とす数（端数はこちらへ）
 
         SpawnAt(center1, n1);
-        //SpawnAt(center2, n2);
+        SpawnAt(center2, n2);
     }
 
     // 指定中心の周囲にボールを散布生成
