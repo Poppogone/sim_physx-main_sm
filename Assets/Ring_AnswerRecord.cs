@@ -96,8 +96,9 @@ public class Ring_AnswerRecord : MonoBehaviour
             Question();
         }
     }
-    
-    /*
+
+    ////////////////////////////////////////
+
     void Question()
     {
         var script = op_state.GetComponent<operation_state_check>();
@@ -188,9 +189,10 @@ public class Ring_AnswerRecord : MonoBehaviour
             return;
         }
     }
-    */
     
     
+    ////////////////////////////////////////
+    /*
     void Question()
     {
         ope_state = 1; // ← 固定
@@ -236,7 +238,8 @@ public class Ring_AnswerRecord : MonoBehaviour
         charactrer_1_list[selected_question - 1] =
             charactrer_1_list[selected_question - 1].Remove(selected_c_num, 1);
     }
-    
+    */
+    ////////////////////////////////////////
 
 
     // 表示用共通関数
