@@ -100,7 +100,7 @@ public class Ring_AnswerRecord : MonoBehaviour
     ////////////////////////////////////////
     /// 
     
-
+    
     void Question()
     {
         var script = op_state.GetComponent<operation_state_check>();
