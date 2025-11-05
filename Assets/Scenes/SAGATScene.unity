@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -497,7 +497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &342916939
 Light:
   m_ObjectHideFlags: 0
@@ -3556,7 +3556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workspace: {fileID: 283066363}
   sagatCorrectCsv: {fileID: 4900000, guid: e8f6b96c660102d47af7a6060c11c81f, type: 3}
-  attachedCsv: {fileID: 4900000, guid: c698af36879a20c40937a7007449e431, type: 3}
+  attachedCsv: {fileID: 4900000, guid: 508c695e717bf6447baec346d4973229, type: 3}
   dotSprite: {fileID: 0}
   dotSize: 25
   colorWhite: {r: 0.047169805, g: 0.047169805, b: 0.047169805, a: 1}
@@ -3566,7 +3566,7 @@ MonoBehaviour:
   cropHeight: 550
   debugSaveFullScreen: 0
   outputFolderName: SAGATData_2025
-  fileBaseName: j_SAGAT_scale
+  fileBaseName: k_SAGAT_scale
   addTimestamp: 0
   exportButton: {fileID: 0}
   pressedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
