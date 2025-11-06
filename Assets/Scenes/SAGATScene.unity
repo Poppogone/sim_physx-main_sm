@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1973,7 +1973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1048934062
 Transform:
   m_ObjectHideFlags: 0
@@ -3834,7 +3834,6 @@ GameObject:
   - component: {fileID: 1829239161}
   - component: {fileID: 1829239160}
   - component: {fileID: 1829239159}
-  - component: {fileID: 1829239158}
   m_Layer: 5
   m_Name: ExportButton
   m_TagString: Untagged
@@ -3862,21 +3861,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: -89}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1829239158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829239156}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc3b4a1793834dd49922f67cb72cbc74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exportButton: {fileID: 1829239159}
-  workspace: {fileID: 283066363}
-  outputFile: Assets/SAGATData_2025/SAGAT_Correct.csv
 --- !u!114 &1829239159
 MonoBehaviour:
   m_ObjectHideFlags: 0

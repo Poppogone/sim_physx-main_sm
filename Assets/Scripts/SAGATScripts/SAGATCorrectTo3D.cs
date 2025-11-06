@@ -19,7 +19,7 @@ public class SAGATCorrectTo3D : MonoBehaviour
         string folderPath = Path.Combine(Application.dataPath, "SAGATData_2025");
         if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
 
-        string path = Path.Combine(folderPath, "SAGAT_Correct_machine.csv");
+        string path = Path.Combine(folderPath, "SAGAT_Correct.csv");
 
         using (StreamWriter writer = new StreamWriter(path))
         {
