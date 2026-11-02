@@ -5009,89 +5009,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb88c22d8c959349826dfed024bd849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  list_0_reset_sw: 1
-  question_0_list_1: 0200000003000000040000000500000006000000070000000a0000000b0000000c0000000d0000000f00000010000000110000001500000017000000190000001a0000001b000000
-  question_0_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  list_0_reset_sw: 0
+  question_0_list_1: 
+  question_0_list_2: 0500000006000000080000000f00000013000000140000001600000017000000190000001b000000
   charactrer_0_list:
+  - 
+  - 
+  - 
+  - 
   - N
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
   - H
-  - N
-  - HN
-  - HN
-  - HN
-  - HN
-  - N
-  - HN
-  - HN
-  - HN
+  - 
   - H
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - N
+  - 
+  - 
+  - 
   - N
   - N
-  - HN
+  - 
+  - H
+  - H
+  - 
   - N
-  - HN
+  - 
   - N
-  - HN
-  - HN
-  - HN
-  list_1_reset_sw: 1
-  question_1_list_1: 01000000050000000600000007000000090000000a0000000b0000000c0000000e0000000f00000010000000110000001200000013000000140000001500000016000000170000001a0000001b000000
-  question_1_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
+  list_1_reset_sw: 0
+  question_1_list_1: 
+  question_1_list_2: 11000000
   charactrer_1_list:
-  - HN
-  - H
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - N
-  - H
-  - HN
-  - HN
-  - HN
-  - H
-  - HN
-  - HN
-  - HN
-  - HN
-  - N
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - H
-  - H
-  - HN
-  - HN
-  list_2_reset_sw: 1
-  question_2_list_1: 010000000200000003000000040000000500000006000000080000000a0000000b0000000c0000000e00000010000000120000001300000014000000150000001600000017000000190000001a0000001b000000
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  list_2_reset_sw: 0
+  question_2_list_1: 02000000030000000400000005000000060000000700000008000000090000000a0000000d0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   question_2_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_2_list:
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - HN
-  - N
-  - HN
   - N
   - HN
   - HN
   - HN
-  - H
-  - HN
-  - N
-  - HN
-  - H
   - HN
   - HN
   - HN
@@ -5099,40 +5086,53 @@ MonoBehaviour:
   - HN
   - HN
   - H
+  - H
+  - HN
+  - N
   - HN
   - HN
   - HN
-  list_3_reset_sw: 1
-  question_3_list_1: 0300000004000000090000000f000000130000001400000017000000
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  list_3_reset_sw: 0
+  question_3_list_1: 010000000200000003000000040000000600000007000000090000000a0000000b0000000d0000000e0000000f0000001000000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   question_3_list_2: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b000000
   charactrer_3_list:
-  - H
-  - N
+  - HN
+  - HN
   - HN
   - HN
   - N
-  - N
-  - N
-  - N
   - HN
-  - H
-  - H
-  - H
-  - N
-  - H
   - HN
-  - H
-  - H
   - H
   - HN
   - HN
-  - N
-  - N
   - HN
   - H
+  - HN
+  - HN
+  - HN
+  - HN
   - N
-  - H
-  - H
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
+  - HN
   text: {fileID: 666587576}
   N_image: {fileID: 142775348}
   H_image: {fileID: 1149963423}
@@ -23590,6 +23590,7 @@ MonoBehaviour:
   bodyLink: {fileID: 4719085803562181320}
   zx120: {fileID: 4719085804356376904}
   baseLink: {fileID: 4719085804421732182}
+  followDelaySeconds: 0.5
   centerPoint: {fileID: 1037089600}
   yellow_camera: {fileID: 2057085008}
   black_camera: {fileID: 1310894345}
@@ -28941,6 +28942,7 @@ MonoBehaviour:
   bodyLink: {fileID: 1542972565}
   zx120: {fileID: 1470120327}
   baseLink: {fileID: 940148621}
+  followDelaySeconds: 2
   centerPoint: {fileID: 963752498}
 --- !u!114 &583818514
 MonoBehaviour:
@@ -52625,6 +52627,7 @@ MonoBehaviour:
   bodyLink: {fileID: 4719085803562181320}
   zx120: {fileID: 4719085804356376904}
   baseLink: {fileID: 4719085804421732182}
+  followDelaySeconds: 0.5
   centerPoint: {fileID: 1037089600}
 --- !u!1 &963752498
 GameObject:
@@ -54181,6 +54184,7 @@ MonoBehaviour:
   bodyLink: {fileID: 1542972565}
   zx120: {fileID: 1470120327}
   baseLink: {fileID: 940148621}
+  followDelaySeconds: 2
   centerPoint: {fileID: 963752498}
   yellow_camera: {fileID: 2057085008}
   black_camera: {fileID: 1310894345}
@@ -89355,7 +89359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1643988195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89404,8 +89408,8 @@ MonoBehaviour:
   armTopic: zx120/arm/cmd
   bucketTopic: zx120/bucket/cmd
   tracksTopic: zx120/tracks/cmd_vel
-  isKeyboardControl: 0
-  isControllerControl: 1
+  isKeyboardControl: 1
+  isControllerControl: 0
   isProControllerControl: 0
   switchSound: {fileID: 0}
   DriverCamera: {fileID: 592123849}
@@ -123348,7 +123352,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 2
   m_Mass: 250
-  m_ParentAnchorPosition: {x: -0.0000006109476, y: 4.600003, z: 0}
+  m_ParentAnchorPosition: {x: 0.0000003427267, y: 4.600003, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0, w: 1.0000002}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -123766,7 +123770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4719085804356376904}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -25, y: 0, z: 10}
+  m_LocalPosition: {x: -25.87, y: 0, z: 10.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4719085803456055500}
