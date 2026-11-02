@@ -13,6 +13,23 @@ public class CameraController : MonoBehaviour
     public GameObject zx120;
     public GameObject baseLink;
 
+    [Min(0f)]
+    [Tooltip("機体への追従遅延（シミュレーション秒）。0で即時追従。開始直後や値を増やした直後は、履歴がたまるまで最も古い機体位置・向きを使用します。")]
+    public float followDelaySeconds = 2f;
+
+    private struct FollowSample
+    {
+        public double time;
+        public Vector3 centerPosition;
+        public float machineYaw;
+    }
+
+    private readonly Queue<FollowSample> followHistory = new Queue<FollowSample>();
+    private FollowSample previousFollowSample;
+    private double lastFollowSampleTime;
+    private bool hasFollowSample;
+
+
     int flag_up = 0;
     int flag_down = 0;
     int flag_right = 0;
@@ -268,22 +285,86 @@ public class CameraController : MonoBehaviour
                 dir += Time.deltaTime * 2;
             }
 
-            poolPos = centerPoint.transform.position;
-            float pan_rad = (pan - bodyLink.transform.localEulerAngles.y - zx120.transform.localEulerAngles.y - baseLink.transform.localEulerAngles.y) / 180 * Mathf.PI;
-            float tilt_rad = tilt / 180 * Mathf.PI;
-
-            x = dir * Mathf.Sin(tilt_rad) * Mathf.Sin(pan_rad) + poolPos.x;
-            y = dir * Mathf.Cos(tilt_rad) + poolPos.y;
-            z = -dir * Mathf.Sin(tilt_rad) * Mathf.Cos(pan_rad) + poolPos.z;
-
-            this.transform.position = new Vector3(x, y, z);
-
-            this.transform.LookAt(centerPoint.transform);
+            // Apply the delayed world-space pose in LateUpdate after the machine updates.
 
 
 
         }
 
+    }
+
+    void OnEnable()
+    {
+        followHistory.Clear();
+        hasFollowSample = false;
+    }
+
+    void OnDisable()
+    {
+        followHistory.Clear();
+        hasFollowSample = false;
+    }
+
+    void LateUpdate()
+    {
+        if (!isDrone)
+        {
+            followHistory.Clear();
+            hasFollowSample = false;
+            return;
+        }
+
+        double now = Time.timeAsDouble;
+        FollowSample current = new FollowSample
+        {
+            time = now,
+            centerPosition = centerPoint.transform.position,
+            machineYaw = bodyLink.transform.localEulerAngles.y
+                + zx120.transform.localEulerAngles.y + baseLink.transform.localEulerAngles.y
+        };
+
+        if (!hasFollowSample)
+        {
+            previousFollowSample = current;
+            lastFollowSampleTime = now;
+            hasFollowSample = true;
+        }
+        else if (now > lastFollowSampleTime)
+        {
+            // Do not accumulate duplicate samples while the simulation is paused.
+            followHistory.Enqueue(current);
+            lastFollowSampleTime = now;
+        }
+
+        double followTime = now - Mathf.Max(0f, followDelaySeconds);
+        while (followHistory.Count > 0 && followHistory.Peek().time <= followTime)
+        {
+            // Retain one sample before the requested time for interpolation.
+            previousFollowSample = followHistory.Dequeue();
+        }
+
+        FollowSample delayed = previousFollowSample;
+        if (followHistory.Count > 0)
+        {
+            FollowSample next = followHistory.Peek();
+            float t = Mathf.Clamp01((float)((followTime - delayed.time) / (next.time - delayed.time)));
+            delayed.centerPosition = Vector3.Lerp(delayed.centerPosition, next.centerPosition, t);
+            delayed.machineYaw = Mathf.LerpAngle(delayed.machineYaw, next.machineYaw, t);
+        }
+
+        // Keep the existing distance, pan and tilt controls; delay only machine motion.
+        // Use the historical look-at point too, so rotation does not follow immediately.
+        poolPos = delayed.centerPosition;
+        float pan_rad = (pan - delayed.machineYaw) / 180 * Mathf.PI;
+        float tilt_rad = tilt / 180 * Mathf.PI;
+
+        x = dir * Mathf.Sin(tilt_rad) * Mathf.Sin(pan_rad) + poolPos.x;
+        y = dir * Mathf.Cos(tilt_rad) + poolPos.y;
+        z = -dir * Mathf.Sin(tilt_rad) * Mathf.Cos(pan_rad) + poolPos.z;
+
+        // Override inherited parent motion in world space before the camera renders.
+        transform.position = new Vector3(x, y, z);
+        transform.LookAt(poolPos);
     }
 
 }
