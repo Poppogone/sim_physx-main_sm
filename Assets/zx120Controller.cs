@@ -10,7 +10,7 @@ public class zx120Controller : MonoBehaviour
     ROSConnection ros;
     private float boomIncreaseCoefficient = 0.271f;
     private float boomDecreaseCoefficient = 0.216f;
-    private float swingCoefficient = 1.279f;
+    private float swingCoefficient = 0.65f;//1.279
     private float armIncreaseCoefficient = 0.482f;
     private float armDecreaseCoefficient = 0.670f;
     private float bucketIncreaseCoefficient = 0.991f;
